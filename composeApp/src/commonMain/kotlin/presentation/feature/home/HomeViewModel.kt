@@ -28,7 +28,7 @@ class HomeViewModel : KMMViewModel(), KoinComponent {
 
     private fun getProducts() {
         viewModelScope.coroutineScope.launch {
-            getProductsUseCase.getProducts()
+            getProductsUseCase()
                 .onStart { _state.update { it.copy(isLoading = true) } }
                 .onCompletion { _state.update { it.copy(isLoading = false) } }
                 .collect { response ->

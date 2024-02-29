@@ -4,6 +4,7 @@ import data.network.ApiService
 import data.repository.ProductPagingSource
 import data.repository.ProductRepositoryImpl
 import domain.repository.ProductRepository
+import domain.usecase.GetPaginatedProductsUseCase
 import domain.usecase.GetProductsUseCase
 import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
@@ -21,7 +22,8 @@ object Modules {
     }
 
     val useCases = module {
-        factory { GetProductsUseCase(get(), get()) }
+        factory { GetProductsUseCase(get()) }
+        factory { GetPaginatedProductsUseCase(get()) }
     }
 }
 
