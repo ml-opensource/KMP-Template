@@ -1,0 +1,106 @@
+.gradle
+**/build/
+!src/**/build/
+local.properties
+.idea
+.DS_Store
+captures
+.externalNativeBuild
+.cxx
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+.fleet/settings.json
+
+# Built application files
+*.apk
+*.aar
+*.app
+*.ipa
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+build/
+/*/build/
+
+# Gradle files
+.gradle/
+gradle-wrapper.jar
+
+# Local configuration files
+/local.properties
+
+# IntelliJ/Android Studio
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.idb
+*.icls
+*.idea_modules
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches
+
+# Keystore files
+*.jks
+*.keystore
+
+# OS generated files
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Kotlin Native
+*.klib
+.kotlin_metadata/
+.klibs/
+
+# Xcode
+.DS_Store*
+/.AppleDouble
+*.lproj/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.xcworkspace
+!default.xcworkspace
+xcuserstate
+
+# Swift Package Manager
+.build/
+
+# CocoaPods
+Pods/
+/Podfile.lock
+/Podfile
+/Podfile.private
+/Podfile.shared
+/Podfile.pods
+/Podfile.workspace
