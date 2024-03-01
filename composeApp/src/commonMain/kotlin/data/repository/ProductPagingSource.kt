@@ -16,7 +16,8 @@ import io.ktor.http.isSuccess
 class ProductPagingSource(private val apiService: ApiService) :
     PagingSource<Int, Product>() {
 
-    override suspend fun load(params: PagingSourceLoadParams<Int>): PagingSourceLoadResult<Int, Product> {
+    override suspend fun load(params: PagingSourceLoadParams<Int>):
+            PagingSourceLoadResult<Int, Product> {
         val page = params.key ?: FIRST_PAGE_INDEX
         val httpResponse = apiService.getProducts(skip = page * 10)
         return when {

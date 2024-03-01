@@ -18,12 +18,11 @@ import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import platform.Greeting
-import presentation.feature.home.HomeScreen
 import presentation.feature.pagination.PaginatedHomeScreen
+import kotlinx.coroutines.delay
 
 object SplashScreen : Screen {
 
@@ -47,12 +46,12 @@ object SplashScreen : Screen {
         Column(
             Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
         ) {
             AnimatedVisibility(showContent) {
                 Column(
                     Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Image(painterResource("compose-multiplatform.xml"), null)
                     Text("Compose: $greeting")

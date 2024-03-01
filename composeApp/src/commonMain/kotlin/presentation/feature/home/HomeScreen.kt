@@ -42,16 +42,16 @@ object HomeScreen : Screen {
                             fontWeight = FontWeight.Black,
                             style = MaterialTheme.typography.h5,
                             textAlign = TextAlign.Center,
-                            modifier = Modifier.fillMaxWidth()
+                            modifier = Modifier.fillMaxWidth(),
                         )
                     },
-                    backgroundColor = Color.LightGray
+                    backgroundColor = Color.LightGray,
                 )
-            }
+            },
         ) {
             Box(
                 modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
+                contentAlignment = Alignment.Center,
             ) {
                 LazyColumn {
                     items(state.productList) { product ->

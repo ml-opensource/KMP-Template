@@ -32,13 +32,13 @@ fun ProductItemView(product: Product, onClick: () -> Unit) {
             .clickable { onClick.invoke() },
         shape = RoundedCornerShape(8.dp),
         elevation = 8.dp,
-        backgroundColor = MaterialTheme.colors.surface
+        backgroundColor = MaterialTheme.colors.surface,
     ) {
         AsyncImage(
             model = product.thumbnail,
             contentDescription = product.title,
             modifier = Modifier.size(220.dp),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
 
         Box(
@@ -49,10 +49,10 @@ fun ProductItemView(product: Product, onClick: () -> Unit) {
                         colors = listOf(
                             Color.Transparent,
                             Color.Transparent,
-                            Color(0xFF1F2023)
-                        )
-                    )
-                )
+                            Color(0xFF1F2023),
+                        ),
+                    ),
+                ),
         ) {
             Text(
                 text = product.title,
@@ -61,7 +61,7 @@ fun ProductItemView(product: Product, onClick: () -> Unit) {
                 style = MaterialTheme.typography.body1,
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
-                    .padding(8.dp)
+                    .padding(8.dp),
             )
         }
     }
