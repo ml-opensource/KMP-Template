@@ -12,8 +12,8 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.serialization.json.Json
 import org.koin.dsl.module
+import kotlinx.serialization.json.Json
 
 object NetworkModule {
     private const val BASE_URL = "dummyjson.com"

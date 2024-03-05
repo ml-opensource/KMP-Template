@@ -9,7 +9,7 @@ internal data class ProductsResponse(
     val limit: Int,
     val products: List<ProductDTO>,
     val skip: Int,
-    val total: Int
+    val total: Int,
 )
 
 @Serializable
@@ -24,9 +24,17 @@ internal data class ProductDTO(
     val rating: Double,
     val stock: Int,
     val thumbnail: String,
-    val title: String
+    val title: String,
 )
 
-internal fun ProductDTO.toDomainModel() = Product(brand, category, description, discountPercentage, id, images, price, rating, stock, thumbnail, title)
+internal fun ProductDTO.toDomainModel() = Product(
+    brand, category, description, discountPercentage,
+    id, images, price, rating, stock, thumbnail, title,
+)
 
-internal fun ProductsResponse.toDomainModel() = ProductList(limit, products.map { it.toDomainModel() }, skip, total)
+internal fun ProductsResponse.toDomainModel() = ProductList(
+    limit,
+    products.map { it.toDomainModel() },
+    skip,
+    total,
+)

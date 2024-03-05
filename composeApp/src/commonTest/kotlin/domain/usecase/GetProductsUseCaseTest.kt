@@ -3,10 +3,10 @@ package domain.usecase
 import domain.model.Product
 import domain.model.ProductList
 import domain.repository.ProductRepository
-import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.test.runTest
 
 class GetProductsUseCaseTest {
     private lateinit var sut: GetProductsUseCase
@@ -32,7 +32,6 @@ class GetProductsUseCaseTest {
 
 private class MockProductRepository : ProductRepository {
     override suspend fun getProducts() = DataSource.productList
-
 }
 
 private object DataSource {
@@ -54,12 +53,12 @@ private object DataSource {
                     "https://cdn.dummyjson.com/product-images/1/2.jpg",
                     "https://cdn.dummyjson.com/product-images/1/3.jpg",
                     "https://cdn.dummyjson.com/product-images/1/4.jpg",
-                    "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"
-                )
-            )
+                    "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+                ),
+            ),
         ),
         limit = 30,
         skip = 0,
-        total = 100
+        total = 100,
     )
 }

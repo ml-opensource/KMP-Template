@@ -4,7 +4,7 @@ data class ProductList(
     val limit: Int,
     val products: List<Product>,
     val skip: Int,
-    val total: Int
+    val total: Int,
 )
 
 data class Product(
@@ -18,5 +18,5 @@ data class Product(
     val rating: Double,
     val stock: Int,
     val thumbnail: String,
-    val title: String
+    val title: String,
 )

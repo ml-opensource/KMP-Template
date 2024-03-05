@@ -42,6 +42,16 @@ This Kotlin Multiplatform project targets Android and iOS using Compose Multipla
    window.
 5. Build and run the project.
 
+## Tools
+These are the tools used in the template, to improve the development, that you should be aware of:
+
+### [Spotless](https://github.com/diffplug/spotless)
+Spotless is a Gradle plugin used for consistent code formatting and style conventions across the project. You can use it running the following Gradle commands:
+
+`./gradlew spotlessCheck` - Checks the style formatting and displays any issues
+
+`./gradlew spotlessApply` - Same as above but automatically try to fix most of the issues. If for any reason it can't, then a list of problems is displayed.
+
 ## Additional Resources
 
 For more information on Kotlin Multiplatform, visit

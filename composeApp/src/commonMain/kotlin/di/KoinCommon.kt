@@ -32,13 +32,13 @@ fun initKoin(
     networkModule: Module = NetworkModule.networkClient,
     servicesModule: Module = Modules.services,
     repositoriesModule: Module = Modules.repositories,
-    useCasesModule: Module = Modules.useCases
+    useCasesModule: Module = Modules.useCases,
 ): KoinApplication = startKoin {
     modules(
         appModule,
         networkModule,
         servicesModule,
         repositoriesModule,
-        useCasesModule
+        useCasesModule,
     )
 }
