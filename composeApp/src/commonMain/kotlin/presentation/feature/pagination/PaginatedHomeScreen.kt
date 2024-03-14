@@ -12,7 +12,6 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import app.cash.paging.LoadStateError
@@ -20,6 +19,7 @@ import app.cash.paging.LoadStateLoading
 import app.cash.paging.LoadStateNotLoading
 import app.cash.paging.compose.collectAsLazyPagingItems
 import cafe.adriel.voyager.core.screen.Screen
+import presentation.theme.Theme
 
 object PaginatedHomeScreen : Screen {
 
@@ -40,7 +40,8 @@ object PaginatedHomeScreen : Screen {
                             modifier = Modifier.fillMaxWidth(),
                         )
                     },
-                    backgroundColor = Color.LightGray,
+                    backgroundColor = Theme.colors.primary,
+                    contentColor = Theme.colors.onPrimary,
                 )
             },
         ) {

@@ -17,9 +17,6 @@ import kotlinx.serialization.json.Json
 
 object NetworkModule {
     private const val BASE_URL = "dummyjson.com"
-    const val PATH = "products"
-    const val PARAM_LIMIT = "limit"
-    const val PARAM_SKIP = "skip"
 
     val networkClient = module {
         single {

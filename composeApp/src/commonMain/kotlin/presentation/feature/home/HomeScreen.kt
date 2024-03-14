@@ -16,11 +16,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import cafe.adriel.voyager.core.screen.Screen
 import presentation.feature.pagination.ProductItemView
+import presentation.theme.Theme
 
 object HomeScreen : Screen {
 
@@ -45,7 +45,9 @@ object HomeScreen : Screen {
                             modifier = Modifier.fillMaxWidth(),
                         )
                     },
-                    backgroundColor = Color.LightGray,
+
+                    backgroundColor = Theme.colors.primary,
+                    contentColor = Theme.colors.onPrimary,
                 )
             },
         ) {
