@@ -67,7 +67,7 @@ object LoginScreen : Screen {
                         viewModel.handleIntent(LoginIntent.OnEmailChange(email = text))
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    placeholder = "Username",
+                    placeholder = { Text(text = "Username") },
                 )
 
                 Spacer(modifier = Modifier.size(Theme.dimensions.medium3))
@@ -79,7 +79,7 @@ object LoginScreen : Screen {
                     },
                     modifier = Modifier.fillMaxWidth(),
                     visualTransformation = PasswordVisualTransformation(),
-                    placeholder = "Password",
+                    placeholder = { Text(text = "Password") },
                 )
 
                 Spacer(modifier = Modifier.size(Theme.dimensions.medium3))
