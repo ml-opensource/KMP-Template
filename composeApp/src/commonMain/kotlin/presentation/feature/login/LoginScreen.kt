@@ -33,12 +33,8 @@ object LoginScreen : Screen {
     override fun Content() {
         val viewModel = LoginViewModel()
         val navigator = LocalNavigator.currentOrThrow
-        val state by viewModel.state.collectAsState(LoginState())
-        val stateLoading by viewModel.stateLoading.collectAsState(false)
+        val state by viewModel.state.collectAsState()
 
-        if (state.isLoggedIn) {
-            navigator.replaceAll(PaginatedHomeScreen)
-        }
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -85,6 +81,7 @@ object LoginScreen : Screen {
                     visualTransformation = PasswordVisualTransformation(),
                     placeholder = "Password",
                 )
+
                 Spacer(modifier = Modifier.size(Theme.dimensions.medium3))
 
                 AppButton(
@@ -93,8 +90,10 @@ object LoginScreen : Screen {
                         viewModel.handleIntent(LoginIntent.Login)
                     },
                     modifier = Modifier.fillMaxWidth(),
-                    isLoading = stateLoading,
+                    isLoading = state.isLoading,
                 )
+
+                if (state.isLoggedIn) navigator.replaceAll(PaginatedHomeScreen)
             }
         }
     }

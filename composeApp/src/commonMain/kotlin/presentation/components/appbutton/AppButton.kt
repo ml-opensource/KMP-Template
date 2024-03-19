@@ -78,7 +78,7 @@ private fun PrimaryButton(
 }
 
 @Composable
-private fun RowScope.ButtonContent(text: String, isLoading: Boolean) {
+private fun ButtonContent(text: String, isLoading: Boolean) {
     Crossfade(targetState = isLoading) {
         if (it) {
             CircularProgressIndicator(
