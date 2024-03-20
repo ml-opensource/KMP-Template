@@ -4,7 +4,10 @@ import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
+import data.model.AuthResponse
+import data.toError
 import domain.usecase.LoginUseCase
+import io.ktor.client.call.body
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
@@ -37,7 +40,15 @@ class LoginViewModel : KMMViewModel(), KoinComponent {
             loginUseCase(state.value.email, state.value.password)
                 .onStart { _state.update { it.copy(isLoading = true) } }
                 .onCompletion { _state.update { it.copy(isLoading = false) } }
-                .collect { response -> _state.update { it.copy(isLoggedIn = response.isSuccess) } }
+                .collect { response ->
+
+                    _state.update {
+                        it.copy(
+                            isLoggedIn = response.isSuccess,
+                            error = response.exceptionOrNull()?.toError()?.message,
+                        )
+                    }
+                }
         }
     }
 }

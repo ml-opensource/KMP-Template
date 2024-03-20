@@ -12,6 +12,7 @@ import io.ktor.client.request.parameter
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
 import io.ktor.client.statement.HttpResponse
+import io.ktor.http.HttpStatusCode
 
 class ApiServiceImpl(private val httpClient: HttpClient) : ApiService {
     override suspend fun getProducts(limit: Int, skip: Int): HttpResponse = httpClient.get(
@@ -22,7 +23,6 @@ class ApiServiceImpl(private val httpClient: HttpClient) : ApiService {
     }
 
     override suspend fun authenticate(userName: String, pass: String): HttpResponse =
-        httpClient.post(Login.path) {
-            setBody(mapOf(username to userName, password to pass))
-        }
+        throw ApiErrorException(HttpStatusCode.BadRequest,"Bad ")
+
 }
