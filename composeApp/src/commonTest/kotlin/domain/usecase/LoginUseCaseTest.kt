@@ -27,11 +27,15 @@ class LoginUseCaseTest {
         val loginUseCase = LoginUseCase(mockAuthRepository)
         val userName = "test"
         val password = "password"
+        val expectedResult = AuthResponse(id = 0, token = "token")
+
 
         // Act
         val result = loginUseCase(userName, password)
 
         // Assert
-        assertEquals(AuthResponse(id = 0, token = "token"), result.getOrNull())
+        result.collect { result ->
+            assertEquals(expectedResult, result.getOrNull())
+        }
     }
 }
