@@ -2,6 +2,7 @@ package di
 
 import data.network.ApiErrorInterceptor
 import io.ktor.client.HttpClient
+import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
@@ -24,10 +25,13 @@ object NetworkModule {
     val networkClient = module {
         single {
             HttpClient {
-                expectSuccess = true
+                expectSuccess = false
                 HttpResponseValidator {
-                    validateResponse { response ->
-                        ApiErrorInterceptor().validateResponse(response)
+                    handleResponseExceptionWithRequest { exception, request ->
+                        val clientException = exception as? ClientRequestException
+                            ?: return@handleResponseExceptionWithRequest
+                        val exceptionResponse = clientException.response
+                        ApiErrorInterceptor().validateResponse(exceptionResponse)
                     }
                 }
                 defaultRequest {

@@ -14,7 +14,7 @@ data class LoginState(
 
 /**
  * Login Actions emitted from the UI Layer
- * passed to the coordinator to handle
+ * passed to the viewmodel to handle
  **/
 sealed class LoginIntent {
     data class OnPasswordChange(val pass: String) : LoginIntent()

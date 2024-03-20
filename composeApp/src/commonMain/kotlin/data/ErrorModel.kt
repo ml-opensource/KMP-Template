@@ -32,4 +32,3 @@ fun Throwable.toError(): ErrorModel {
         else -> ErrorModel.Unknown(this, "Unknown error: ${this.message}")
     }
 }
-
