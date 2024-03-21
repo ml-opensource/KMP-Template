@@ -24,18 +24,16 @@ class LoginUseCaseTest {
     @Test
     fun loginUseCase_ValidCredentials_ReturnsAuthResponse() = runTest {
         // Arrange
-        val loginUseCase = LoginUseCase(mockAuthRepository)
         val userName = "test"
         val password = "password"
         val expectedResult = AuthResponse(id = 0, token = "token")
 
-
         // Act
-        val result = loginUseCase(userName, password)
+        val result = sut(userName, password)
 
         // Assert
-        result.collect { result ->
-            assertEquals(expectedResult, result.getOrNull())
+        result.collect { actualResult ->
+            assertEquals(expectedResult, actualResult.getOrNull())
         }
     }
 }
