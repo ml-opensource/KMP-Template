@@ -23,7 +23,7 @@ import kmp_template.composeapp.generated.resources.compose_multiplatform
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import platform.Greeting
-import presentation.feature.pagination.PaginatedHomeScreen
+import presentation.feature.login.LoginScreen
 import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.Resource
 
@@ -42,8 +42,7 @@ object SplashScreen : Screen {
             delay(1000)
             showContent = false
             delay(500)
-            // navigator.push(HomeScreen)
-            navigator.push(PaginatedHomeScreen)
+            navigator.replaceAll(LoginScreen)
         }
 
         Column(
