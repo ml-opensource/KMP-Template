@@ -1,4 +1,4 @@
-package data.network
+package data.network.errorhandling
 
 import io.ktor.http.HttpStatusCode
 

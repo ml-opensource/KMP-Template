@@ -4,10 +4,10 @@ import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
-import data.toError
 import domain.usecase.LoginUseCase
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import presentation.model.toError
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart

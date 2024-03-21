@@ -1,6 +1,6 @@
-package data
+package presentation.model
 
-import data.network.ApiErrorException
+import data.network.errorhandling.ApiErrorException
 import io.ktor.client.network.sockets.SocketTimeoutException
 
 sealed interface ErrorModel {
@@ -12,10 +12,6 @@ sealed interface ErrorModel {
     sealed class Connection : ErrorModel {
         data object Timeout : Connection() {
             override val message: String = "Connection timed out"
-        }
-
-        data object UnknownHost : Connection() {
-            override val message: String = "Unknown host"
         }
     }
 

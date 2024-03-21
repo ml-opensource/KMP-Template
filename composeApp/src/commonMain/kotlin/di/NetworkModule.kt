@@ -1,6 +1,6 @@
 package di
 
-import data.network.ApiErrorInterceptor
+import data.network.errorhandling.ApiErrorInterceptor
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.HttpResponseValidator

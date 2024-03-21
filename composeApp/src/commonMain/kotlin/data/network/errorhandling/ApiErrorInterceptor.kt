@@ -1,4 +1,4 @@
-package data.network
+package data.network.errorhandling
 
 import di.ApiErrorValidator
 import io.ktor.client.statement.HttpResponse
