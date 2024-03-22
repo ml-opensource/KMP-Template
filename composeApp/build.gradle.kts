@@ -17,7 +17,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -28,7 +28,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         all {
             languageSettings {
@@ -51,7 +51,6 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
-            @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
             implementation(libs.bundles.voyager)
             implementation(libs.koin.core)
@@ -65,7 +64,11 @@ kotlin {
             implementation(kotlin("test-annotations-common"))
             implementation(libs.koin.test)
             implementation(libs.kotlinx.coroutines.test)
+            implementation(kotlin("test"))
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.uiTest)
         }
+
     }
 }
 
