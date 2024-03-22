@@ -10,6 +10,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -28,6 +29,11 @@ object PaginatedHomeScreen : Screen {
     override fun Content() {
         val viewModel = PaginatedHomeViewModel()
         val productList = viewModel.productList.collectAsLazyPagingItems()
+
+        LaunchedEffect(Unit) {
+            viewModel.saveUser("Aslam", "aslam.hossin@monstar-lab.com")
+        }
+
 
         Scaffold(
             topBar = {
@@ -77,4 +83,5 @@ object PaginatedHomeScreen : Screen {
             }
         }
     }
+
 }
