@@ -8,8 +8,6 @@ sealed class ApiDefinition {
 
     object ApiField {
 
-        const val USERNAME = "username"
-        const val PASSWORD = "password"
         const val PARAM_LIMIT = "limit"
         const val PARAM_SKIP = "skip"
     }

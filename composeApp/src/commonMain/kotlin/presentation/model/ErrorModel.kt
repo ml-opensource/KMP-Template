@@ -1,21 +1,17 @@
 package presentation.model
 
-import data.network.errorhandling.ApiErrorException
+import error.ApiErrorException
 import io.ktor.client.network.sockets.SocketTimeoutException
 
-sealed interface ErrorModel {
+sealed class ErrorModel(open val message: String) {
+    data class ApiError(val exception: ApiErrorException, override val message: String) :
+        ErrorModel(message)
 
-    val message: String
-
-    data class ApiError(val exception: ApiErrorException, override val message: String) : ErrorModel
-
-    sealed class Connection : ErrorModel {
-        data object Timeout : Connection() {
-            override val message: String = "Connection timed out"
-        }
+    sealed class Connection(override val message: String) : ErrorModel(message) {
+        data object Timeout : Connection("Connection timed out")
     }
 
-    data class Unknown(val throwable: Throwable, override val message: String) : ErrorModel
+    data class Unknown(val throwable: Throwable, override val message: String) : ErrorModel(message)
 }
 
 fun Throwable.toError(): ErrorModel {

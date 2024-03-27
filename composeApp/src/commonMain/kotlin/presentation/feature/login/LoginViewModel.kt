@@ -4,6 +4,7 @@ import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
+import data.network.requests.LoginRequest
 import domain.usecase.LoginUseCase
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -35,7 +36,7 @@ class LoginViewModel : KMMViewModel(), KoinComponent {
 
     private fun login() {
         viewModelScope.coroutineScope.launch {
-            loginUseCase(state.value.email, state.value.password)
+            loginUseCase(LoginRequest(state.value.email, state.value.password))
                 .onStart { _state.update { it.copy(isLoading = true) } }
                 .onCompletion { _state.update { it.copy(isLoading = false) } }
                 .collect { response ->

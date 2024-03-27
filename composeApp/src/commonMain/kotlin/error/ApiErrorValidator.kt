@@ -1,4 +1,4 @@
-package di
+package error
 
 import io.ktor.client.statement.HttpResponse
 

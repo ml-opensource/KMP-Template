@@ -1,6 +1,6 @@
 package di
 
-import data.network.errorhandling.ApiErrorInterceptor
+import data.network.errorhandling.validateResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.ClientRequestException
 import io.ktor.client.plugins.HttpResponseValidator
@@ -21,7 +21,8 @@ import kotlinx.serialization.json.Json
 
 object NetworkModule {
     private const val BASE_URL = "dummyjson.com"
-    const val TIMEOUT_DURATION: Long = 60_000
+    private const val TIMEOUT_DURATION: Long = 60_000
+
     val networkClient = module {
         single {
             HttpClient {
@@ -31,7 +32,7 @@ object NetworkModule {
                         val clientException = exception as? ClientRequestException
                             ?: return@handleResponseExceptionWithRequest
                         val exceptionResponse = clientException.response
-                        ApiErrorInterceptor().validateResponse(exceptionResponse)
+                        validateResponse(exceptionResponse)
                     }
                 }
                 defaultRequest {

@@ -1,31 +1,25 @@
 package data.network.errorhandling
 
-import di.ApiErrorValidator
+import error.ApiErrorException
 import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpStatusCode
 
-class ApiErrorInterceptor : ApiErrorValidator {
-    override fun validateResponse(response: HttpResponse) {
-        when (val statusCode = response.status) {
-            HttpStatusCode.Forbidden -> throw ApiErrorException(statusCode, "Access denied")
-            HttpStatusCode.BadRequest -> throw ApiErrorException(statusCode, "Bad request")
-            HttpStatusCode.Unauthorized -> throw ApiErrorException(statusCode, "Unauthorized")
-            HttpStatusCode.NotFound -> throw ApiErrorException(statusCode, "Resource not found")
-            HttpStatusCode.InternalServerError -> throw ApiErrorException(
-                statusCode,
-                "Internal server error",
-            )
-            HttpStatusCode.ServiceUnavailable -> throw ApiErrorException(
-                statusCode,
-                "Service unavailable",
-            )
-            HttpStatusCode.RequestTimeout -> throw ApiErrorException(
-                statusCode,
-                "The request timed out",
-            )
-            else -> {
-                throw ApiErrorException(statusCode, "Unexpected status code: ${statusCode.value}")
-            }
-        }
+fun validateResponse(response: HttpResponse) {
+    val statusCode = response.status.value
+    val displayableMessage = response.status.toDisplayableMessage()
+    val loggableMessage = "Error code: $statusCode, message: $displayableMessage"
+    throw ApiErrorException(statusCode, displayableMessage, loggableMessage)
+}
+
+fun HttpStatusCode.toDisplayableMessage(): String {
+    return when (this) {
+        HttpStatusCode.Forbidden -> "Access denied"
+        HttpStatusCode.BadRequest -> "Bad request"
+        HttpStatusCode.Unauthorized -> "Unauthorized"
+        HttpStatusCode.NotFound -> "Resource not found"
+        HttpStatusCode.InternalServerError -> "Internal server error"
+        HttpStatusCode.ServiceUnavailable -> "Service unavailable"
+        HttpStatusCode.RequestTimeout -> "The request timed out"
+        else -> "Unexpected status code: $value"
     }
 }
