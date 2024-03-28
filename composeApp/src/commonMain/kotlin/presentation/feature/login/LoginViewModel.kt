@@ -36,17 +36,16 @@ class LoginViewModel : KMMViewModel(), KoinComponent {
 
     private fun login() {
         viewModelScope.coroutineScope.launch {
-            loginUseCase(LoginRequest(state.value.email, state.value.password))
-                .onStart { _state.update { it.copy(isLoading = true) } }
-                .onCompletion { _state.update { it.copy(isLoading = false) } }
-                .collect { response ->
-                    _state.update {
-                        it.copy(
-                            isLoggedIn = response.isSuccess,
-                            error = response.exceptionOrNull()?.toError()?.message,
-                        )
-                    }
-                }
+            _state.update { it.copy(isLoading = true) }
+            val state = _state.value
+            val result = loginUseCase(LoginRequest(state.email, state.password))
+            _state.update { state ->
+                state.copy(
+                    error = result.exceptionOrNull()?.toError()?.message,
+                    isLoading = false,
+                    isLoggedIn = result.isSuccess
+                )
+            }
         }
     }
 }
