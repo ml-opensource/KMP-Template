@@ -3,10 +3,10 @@ package domain.usecase
 import data.network.requests.LoginRequest
 import data.network.responses.AuthResponse
 import domain.repository.AuthRepository
-import kotlinx.coroutines.test.runTest
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.test.runTest
 
 class LoginUseCaseTest {
 

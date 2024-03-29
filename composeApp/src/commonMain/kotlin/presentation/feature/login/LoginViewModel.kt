@@ -10,8 +10,6 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import presentation.model.toError
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
@@ -43,7 +41,7 @@ class LoginViewModel : KMMViewModel(), KoinComponent {
                 state.copy(
                     error = result.exceptionOrNull()?.toError()?.message,
                     isLoading = false,
-                    isLoggedIn = result.isSuccess
+                    isLoggedIn = result.isSuccess,
                 )
             }
         }
