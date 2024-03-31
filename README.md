@@ -3,7 +3,8 @@
 This Kotlin Multiplatform project targets Android and iOS using Compose Multiplatform.
 
 💻 **Techstack**
--   <img src="https://kotlinlang.org/assets/images/favicon.svg?&v=8607ff59d5296c7642ecd72bd3daa79b" height=12 /> 100% Kotlin
+-   <img src="https://kotlinlang.org/assets/images/favicon.svg?&v=8607ff59d5296c7642ecd72bd3daa79b" height=12 /> Kotlin Multiplatform
+-   [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) for sharing UIs across multiple platforms with Kotlin
 - 🔄 Kotlin Coroutines for async operations
 - 🚀 Jetpack Architecture Components
 - <img src="https://developer.android.com/static/images/spot-icons/jetpack-compose.svg" height = 16>  Jetpack Compose ❤️
@@ -26,9 +27,9 @@ This Kotlin Multiplatform project targets Android and iOS using Compose Multipla
 ### iOS (First-time setup in Xcode):
 
 1. Navigate to the `iosApp` directory.
-2. If there's an Xcode project (`*.xcodeproj`) or workspace (`*.xcworkspace`), open it in Xcode.
+2. Open an Xcode project (`*.xcodeproj`) or workspace (`*.xcworkspace`) in Xcode.
 
-   - If there's both, prefer opening the `.xcworkspace`.
+   - If there are both, prefer opening the `.xcworkspace`.
 
 3. For first-time setup, ensure that you have the correct signing and team settings:
 
@@ -47,9 +48,9 @@ This Kotlin Multiplatform project targets Android and iOS using Compose Multipla
     - `commonMain`: Holds code that's common for all targets.
     - Platform-specific directories (e.g., `androidMain`, `iosMain`): Contain Kotlin code that will
       compile only for the designated platform. For iOS-specific Kotlin code, such as integration with
-      Apple's CoreCrypto, use `iosMain`.
+      Apple's CoreCrypto, uses `iosMain`.
 
-- `/iosApp`: Contains the iOS application. This serves as the necessary entry point for the iOS app,
+- `/iosApp`: Contains the iOS application. This is the necessary entry point for the iOS app,
   even when sharing UI with Compose Multiplatform. This is also where to add any SwiftUI code for
   your project.
 
@@ -57,7 +58,7 @@ This Kotlin Multiplatform project targets Android and iOS using Compose Multipla
 Template implements [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and follows [best practices](https://developer.android.com/topic/architecture) provided by Google with some tweaks here and there
 
 ### Presentation layer
-In our Android world, the Presentation layer or UI Layer is our Activities, Fragments, Jetpack Compose UI screens and components and ViewModels. The Presentation layer interacts with Domain Layer where our business logic happens.
+In our Android world, the Presentation layer or UI Layer is our Activities, Fragments, Jetpack Compose UI screens and components, and ViewModels. The Presentation layer interacts with the Domain Layer where our business logic happens.
 
 ### Domain layer
 The domain layer contains the application's business logic. This layer should only work with abstractions and as such it would never know about how different layers look like. It shouldn’t know about any Databases, APIs, or even Android Framework.
@@ -74,7 +75,7 @@ Spotless is a Gradle plugin used for consistent code formatting and style conven
 
 `./gradlew spotlessCheck` - Checks the style formatting and displays any issues
 
-`./gradlew spotlessApply` - Same as above but automatically try to fix most of the issues. If for any reason it can't, then a list of problems is displayed.
+`./gradlew spotlessApply` - Same as above but automatically tries to fix most of the issues. If for any reason it can't, then a list of problems is displayed.
 
 ## Additional Resources
 
