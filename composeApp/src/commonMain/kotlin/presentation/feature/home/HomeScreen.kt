@@ -16,11 +16,10 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import cafe.adriel.voyager.core.screen.Screen
-import presentation.feature.pagination.ProductItemView
+import presentation.theme.Theme
 
 object HomeScreen : Screen {
 
@@ -30,7 +29,7 @@ object HomeScreen : Screen {
         val state by viewModel.state.collectAsState()
 
         LaunchedEffect(Unit) {
-            viewModel.onEvent(HomeScreenEvent.OnLoadMore)
+            viewModel.handleIntent(HomeScreenIntent.OnLaunch)
         }
 
         Scaffold(
@@ -45,7 +44,8 @@ object HomeScreen : Screen {
                             modifier = Modifier.fillMaxWidth(),
                         )
                     },
-                    backgroundColor = Color.LightGray,
+                    backgroundColor = Theme.colors.primary,
+                    contentColor = Theme.colors.onPrimary,
                 )
             },
         ) {
@@ -55,9 +55,16 @@ object HomeScreen : Screen {
             ) {
                 LazyColumn {
                     items(state.productList) { product ->
-                        ProductItemView(product) {
-                            // on click operation
-                        }
+                        ProductItemView(
+                            product = product,
+                            isFavorite = state.favoriteList.contains(product),
+                            onFavoriteClick = {
+                                viewModel.handleIntent(HomeScreenIntent.OnFavoriteClick(product))
+                            },
+                            onClick = {
+                                // Handle OnClick
+                            }
+                        )
                     }
                 }
 
