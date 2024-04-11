@@ -5,14 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import data.network.requests.LoginRequest
 import domain.usecase.LoginUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
 import presentation.model.toError
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val loginUseCase: LoginUseCase
+    private val loginUseCase: LoginUseCase,
 ) : ViewModel() {
     private val _state = MutableStateFlow(LoginState())
 

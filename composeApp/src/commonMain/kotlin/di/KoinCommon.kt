@@ -38,7 +38,7 @@ object Modules {
     val viewModels = module {
         factory { LoginViewModel(get()) }
         factory { HomeViewModel(get()) }
-        factory { PaginatedHomeViewModel(get())}
+        factory { PaginatedHomeViewModel(get()) }
     }
 }
 
@@ -48,7 +48,7 @@ fun initKoin(
     servicesModule: Module = Modules.services,
     repositoriesModule: Module = Modules.repositories,
     useCasesModule: Module = Modules.useCases,
-    viewModels: Module = Modules.viewModels
+    viewModels: Module = Modules.viewModels,
 ): KoinApplication = startKoin {
     modules(
         appModule,
@@ -56,6 +56,6 @@ fun initKoin(
         servicesModule,
         repositoriesModule,
         useCasesModule,
-        viewModels
+        viewModels,
     )
 }

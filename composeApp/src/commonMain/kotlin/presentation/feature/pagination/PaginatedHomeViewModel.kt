@@ -6,7 +6,7 @@ import androidx.paging.cachedIn
 import domain.usecase.GetPaginatedProductsUseCase
 
 class PaginatedHomeViewModel(
-    getPaginatedProductsUseCase: GetPaginatedProductsUseCase
+    getPaginatedProductsUseCase: GetPaginatedProductsUseCase,
 ) : ViewModel() {
 
     val productList = getPaginatedProductsUseCase().cachedIn(viewModelScope)
