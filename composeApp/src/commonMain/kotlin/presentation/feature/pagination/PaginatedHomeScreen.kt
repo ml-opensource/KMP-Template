@@ -19,13 +19,14 @@ import app.cash.paging.LoadStateLoading
 import app.cash.paging.LoadStateNotLoading
 import app.cash.paging.compose.collectAsLazyPagingItems
 import cafe.adriel.voyager.core.screen.Screen
+import org.koin.compose.koinInject
 import presentation.theme.Theme
 
 object PaginatedHomeScreen : Screen {
 
     @Composable
     override fun Content() {
-        val viewModel = PaginatedHomeViewModel()
+        val viewModel = koinInject<PaginatedHomeViewModel>()
         val productList = viewModel.productList.collectAsLazyPagingItems()
 
         Scaffold(

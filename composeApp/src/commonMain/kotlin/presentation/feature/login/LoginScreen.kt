@@ -23,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import org.koin.compose.koinInject
 import presentation.components.appbutton.AppButton
 import presentation.components.apptextfield.AppTextField
 import presentation.feature.pagination.PaginatedHomeScreen
@@ -31,7 +32,7 @@ import presentation.theme.Theme
 object LoginScreen : Screen {
     @Composable
     override fun Content() {
-        val viewModel = LoginViewModel()
+        val viewModel = koinInject<LoginViewModel>()
         val navigator = LocalNavigator.currentOrThrow
         val state by viewModel.state.collectAsState()
 

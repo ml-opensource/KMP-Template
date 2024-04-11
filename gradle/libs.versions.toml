@@ -21,6 +21,7 @@ pagingCommon = "3.3.0-alpha02-0.4.0"
 pagingAndroid = "3.3.0-alpha02"
 voyager = "1.0.0"
 koin = "3.4.3"
+koin-compose-kmp = "1.2.0-alpha3"
 ktor = "2.3.7"
 ksp = "1.9.22-1.0.17"
 nativecoroutines = "1.0.0-ALPHA-25"
@@ -54,6 +55,7 @@ voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", vers
 voyager-koin = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
 
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-compose = { group = "io.insert-koin", name = "koin-compose", version.ref = "koin-compose-kmp" }
 koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
 
 ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }

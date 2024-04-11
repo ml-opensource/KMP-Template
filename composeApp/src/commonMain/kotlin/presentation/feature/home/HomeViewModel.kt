@@ -5,16 +5,16 @@ import androidx.lifecycle.viewModelScope
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import domain.usecase.GetProductsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel(), KoinComponent {
-    private val getProductsUseCase: GetProductsUseCase by inject()
+class HomeViewModel(
+    private val getProductsUseCase: GetProductsUseCase
+) : ViewModel() {
+
     private val _state = MutableStateFlow(HomeScreenState())
 
     @NativeCoroutinesState

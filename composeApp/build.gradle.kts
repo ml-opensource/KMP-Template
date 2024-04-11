@@ -58,6 +58,7 @@ kotlin {
             implementation(compose.components.resources)
             implementation(libs.bundles.voyager)
             implementation(libs.koin.core)
+            implementation(libs.koin.compose)
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
             implementation(libs.bundles.paging)

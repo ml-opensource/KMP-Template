@@ -4,11 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import domain.usecase.GetPaginatedProductsUseCase
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class PaginatedHomeViewModel : ViewModel(), KoinComponent {
-    private val getPaginatedProductsUseCase: GetPaginatedProductsUseCase by inject()
+class PaginatedHomeViewModel(
+    getPaginatedProductsUseCase: GetPaginatedProductsUseCase
+) : ViewModel() {
 
     val productList = getPaginatedProductsUseCase().cachedIn(viewModelScope)
 }

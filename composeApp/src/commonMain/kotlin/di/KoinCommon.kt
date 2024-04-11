@@ -14,6 +14,9 @@ import org.koin.core.KoinApplication
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 import org.koin.dsl.module
+import presentation.feature.home.HomeViewModel
+import presentation.feature.login.LoginViewModel
+import presentation.feature.pagination.PaginatedHomeViewModel
 
 object Modules {
     val services = module {
@@ -31,6 +34,12 @@ object Modules {
         factory { GetPaginatedProductsUseCase(get()) }
         factory { LoginUseCase(get()) }
     }
+
+    val viewModels = module {
+        factory { LoginViewModel(get()) }
+        factory { HomeViewModel(get()) }
+        factory { PaginatedHomeViewModel(get())}
+    }
 }
 
 fun initKoin(
@@ -39,6 +48,7 @@ fun initKoin(
     servicesModule: Module = Modules.services,
     repositoriesModule: Module = Modules.repositories,
     useCasesModule: Module = Modules.useCases,
+    viewModels: Module = Modules.viewModels
 ): KoinApplication = startKoin {
     modules(
         appModule,
@@ -46,5 +56,6 @@ fun initKoin(
         servicesModule,
         repositoriesModule,
         useCasesModule,
+        viewModels
     )
 }

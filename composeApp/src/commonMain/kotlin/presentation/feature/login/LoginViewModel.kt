@@ -6,15 +6,14 @@ import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import data.network.requests.LoginRequest
 import domain.usecase.LoginUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 import presentation.model.toError
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class LoginViewModel : ViewModel(), KoinComponent {
-    private val loginUseCase: LoginUseCase by inject()
+class LoginViewModel(
+    private val loginUseCase: LoginUseCase
+) : ViewModel() {
     private val _state = MutableStateFlow(LoginState())
 
     @NativeCoroutinesState

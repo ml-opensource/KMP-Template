@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import cafe.adriel.voyager.core.screen.Screen
+import org.koin.compose.koinInject
 import presentation.feature.pagination.ProductItemView
 import presentation.theme.Theme
 
@@ -26,7 +27,7 @@ object HomeScreen : Screen {
 
     @Composable
     override fun Content() {
-        val viewModel = HomeViewModel()
+        val viewModel = koinInject<HomeViewModel>()
         val state by viewModel.state.collectAsState()
 
         LaunchedEffect(Unit) {
