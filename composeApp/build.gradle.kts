@@ -1,4 +1,3 @@
-import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -7,6 +6,11 @@ plugins {
     alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.nativecoroutines)
+}
+
+// Exclude viewmodel dep from other sources
+configurations.all {
+    resolutionStrategy.force("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0-alpha04")
 }
 
 kotlin {
@@ -51,14 +55,13 @@ kotlin {
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
-            @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
             implementation(libs.bundles.voyager)
             implementation(libs.koin.core)
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
             implementation(libs.bundles.paging)
-            api(libs.kmm.viewmodel.core)
+            implementation(libs.androidx.lifecycle.viewmodel)
         }
         commonTest.dependencies {
             implementation(kotlin("test-common"))
