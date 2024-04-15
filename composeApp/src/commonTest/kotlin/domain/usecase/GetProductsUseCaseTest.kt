@@ -19,7 +19,7 @@ class GetProductsUseCaseTest {
 
         // Act
         lateinit var actualResponse: ProductList
-        sut().collect { result -> result.onSuccess { actualResponse = it } }
+        sut().onSuccess { actualResponse = it }
 
         // Assert
         assertEquals(assertedResponse, actualResponse)
@@ -33,7 +33,7 @@ class GetProductsUseCaseTest {
 
         // Act
         lateinit var actualResponse: String
-        sut().collect { result -> result.onFailure { actualResponse = it.message.toString() } }
+        sut().onFailure { actualResponse = it.message.toString() }
 
         // Assert
         assertEquals(assertedResponse, actualResponse)
