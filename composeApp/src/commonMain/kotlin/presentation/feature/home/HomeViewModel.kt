@@ -9,12 +9,9 @@ import domain.usecase.favorite.AddToFavoriteUseCase
 import domain.usecase.favorite.GetFavoritesUseCase
 import domain.usecase.favorite.RemoveFromFavoriteUseCase
 import domain.usecase.product.GetProductsUseCase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
@@ -49,58 +46,46 @@ class HomeViewModel : KMMViewModel(), KoinComponent {
     }
 
     private suspend fun getFavorites() {
-        viewModelScope.coroutineScope.launch {
-            withContext(Dispatchers.IO) {
-                _state.update { it.copy(isLoading = true) }
-                getFavoritesUseCase()
-                    .onSuccess { response ->
-                        _state.update { it.copy(favoriteList = response) }
-                    }
-                    .onFailure {
-                        // handle error
-                    }
-                _state.update { it.copy(isLoading = false) }
+        _state.update { it.copy(isLoading = true) }
+        getFavoritesUseCase()
+            .onSuccess { response ->
+                _state.update { it.copy(favoriteList = response) }
             }
-        }
+            .onFailure {
+                // handle error
+            }
+        _state.update { it.copy(isLoading = false) }
     }
 
     private suspend fun getProducts() {
-        viewModelScope.coroutineScope.launch {
-            withContext(Dispatchers.IO) {
-                _state.update { it.copy(isLoading = true) }
-                getProductsUseCase()
-                    .onSuccess { response ->
-                        _state.update { it.copy(productList = response.products) }
-                    }
-                    .onFailure {
-                        // handle error
-                    }
-                _state.update { it.copy(isLoading = false) }
+        _state.update { it.copy(isLoading = true) }
+        getProductsUseCase()
+            .onSuccess { response ->
+                _state.update { it.copy(productList = response.products) }
             }
-        }
+            .onFailure {
+                // handle error
+            }
+        _state.update { it.copy(isLoading = false) }
     }
 
     private fun addToFavorite(product: Product) {
         viewModelScope.coroutineScope.launch {
-            withContext(Dispatchers.IO) {
-                addToFavoriteUseCase(product)
-                    .onSuccess { getFavorites() }
-                    .onFailure {
-                        // handle error
-                    }
-            }
+            addToFavoriteUseCase(product)
+                .onSuccess { getFavorites() }
+                .onFailure {
+                    // handle error
+                }
         }
     }
 
     private fun removeFromFavorite(product: Product) {
         viewModelScope.coroutineScope.launch {
-            withContext(Dispatchers.IO) {
-                removeFromFavoriteUseCase(product)
-                    .onSuccess { getFavorites() }
-                    .onFailure {
-                        // handle error
-                    }
-            }
+            removeFromFavoriteUseCase(product)
+                .onSuccess { getFavorites() }
+                .onFailure {
+                    // handle error
+                }
         }
     }
 }

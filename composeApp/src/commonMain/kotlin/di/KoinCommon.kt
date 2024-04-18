@@ -1,6 +1,7 @@
 package di
 
 import di.modules.databaseModule
+import di.modules.dispatcherModule
 import di.modules.mapperModule
 import di.modules.networkModule
 import di.modules.platformModule
@@ -15,6 +16,7 @@ fun initKoin(appModule: Module = module { }): KoinApplication = startKoin {
     modules(
         appModule,
         mapperModule,
+        dispatcherModule,
         networkModule,
         databaseModule,
         repositoryModule,

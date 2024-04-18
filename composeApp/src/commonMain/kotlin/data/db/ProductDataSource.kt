@@ -3,9 +3,9 @@ package data.db
 import domain.model.Product
 
 interface ProductDataSource {
-    fun insertProduct(product: Product)
+    suspend fun insertProduct(product: Product)
 
-    fun fetchAllProducts(): List<Product>
+    suspend fun fetchAllProducts(): List<Product>
 
-    fun deleteProduct(productId: Int)
+    suspend fun deleteProduct(productId: Int)
 }

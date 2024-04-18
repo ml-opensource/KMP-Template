@@ -5,6 +5,7 @@ import com.monstarlab.kmp.ProductDB
 import com.monstarlab.kmp.ProductDatabase
 import data.db.ProductDataSource
 import data.db.ProductDatabaseDataSource
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val databaseModule = module {
@@ -20,5 +21,5 @@ val databaseModule = module {
             override fun encode(value: List<String>) = value.joinToString(separator = ",")
         }))
     }
-    single<ProductDataSource> { ProductDatabaseDataSource(get(), get()) }
+    single<ProductDataSource> { ProductDatabaseDataSource(get(), get(named(Dispatcher.IO)), get()) }
 }
