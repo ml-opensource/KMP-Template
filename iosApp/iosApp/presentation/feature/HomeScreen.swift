@@ -31,7 +31,7 @@ struct HomeScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Home")
             .onAppear {
-                viewModel.onEvent(event: HomeScreenEvent.OnLoadMore())
+                viewModel.handleIntent(intent: HomeScreenIntent.OnLaunch())
             }
         }
     }
