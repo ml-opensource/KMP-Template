@@ -12,64 +12,53 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import cafe.adriel.voyager.core.screen.Screen
 import presentation.theme.Theme
 
-object HomeScreen : Screen {
+@Composable
+fun HomeScreen(state: HomeScreenState, action: (HomeScreenIntent) -> Unit) {
+    LaunchedEffect(Unit) {
+        action(HomeScreenIntent.OnLaunch)
+    }
 
-    @Composable
-    override fun Content() {
-        val viewModel = HomeViewModel()
-        val state by viewModel.state.collectAsState()
-
-        LaunchedEffect(Unit) {
-            viewModel.handleIntent(HomeScreenIntent.OnLaunch)
-        }
-
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = {
-                        Text(
-                            text = "Home",
-                            fontWeight = FontWeight.Black,
-                            style = MaterialTheme.typography.h5,
-                            textAlign = TextAlign.Center,
-                            modifier = Modifier.fillMaxWidth(),
-                        )
-                    },
-                    backgroundColor = Theme.colors.primary,
-                    contentColor = Theme.colors.onPrimary,
-                )
-            },
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = "Home",
+                        fontWeight = FontWeight.Black,
+                        style = MaterialTheme.typography.h5,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                },
+                backgroundColor = Theme.colors.primary,
+                contentColor = Theme.colors.onPrimary,
+            )
+        },
+    ) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center,
         ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center,
-            ) {
-                LazyColumn {
-                    items(state.productList) { product ->
-                        ProductItemView(
-                            product = product,
-                            isFavorite = state.favoriteList.contains(product),
-                            onFavoriteClick = {
-                                viewModel.handleIntent(HomeScreenIntent.OnFavoriteClick(product))
-                            },
-                            onClick = {
-                                // Handle OnClick
-                            }
-                        )
-                    }
+            LazyColumn {
+                items(state.productList) { product ->
+                    ProductItemView(product = product,
+                        isFavorite = state.favoriteList.contains(product),
+                        onFavoriteClick = {
+                            action(HomeScreenIntent.OnFavoriteClick(product))
+                        },
+                        onClick = {
+                            // Handle OnClick
+                        })
                 }
-
-                if (state.isLoading) CircularProgressIndicator()
             }
+
+            if (state.isLoading) CircularProgressIndicator()
         }
     }
 }
