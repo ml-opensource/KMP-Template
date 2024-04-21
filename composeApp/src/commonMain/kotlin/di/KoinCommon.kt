@@ -1,5 +1,6 @@
 package di
 
+import data.preference.createDataStore
 import di.modules.databaseModule
 import di.modules.dispatcherModule
 import di.modules.mapperModule
@@ -21,6 +22,7 @@ fun initKoin(appModule: Module = module { }): KoinApplication = startKoin {
         databaseModule,
         repositoryModule,
         useCaseModule,
-        platformModule
+        platformModule,
+        module { single { createDataStore() } }
     )
 }

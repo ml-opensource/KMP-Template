@@ -1,5 +1,6 @@
 package di.modules
 
+import domain.usecase.GetUserFromPreferenceUseCase
 import domain.usecase.LoginUseCase
 import domain.usecase.favorite.AddToFavoriteUseCase
 import domain.usecase.favorite.GetFavoritesUseCase
@@ -15,4 +16,5 @@ val useCaseModule = module {
     factory { AddToFavoriteUseCase(get()) }
     factory { RemoveFromFavoriteUseCase(get()) }
     factory { LoginUseCase(get()) }
+    factory { GetUserFromPreferenceUseCase(get()) }
 }

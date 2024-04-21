@@ -7,9 +7,9 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.paging.cachedIn
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.coroutineScope
-import domain.usecase.GetPaginatedProductsUseCase
 import domain.usecase.GetUserFromPreferenceUseCase
 import domain.usecase.User
+import domain.usecase.product.GetPaginatedProductsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
