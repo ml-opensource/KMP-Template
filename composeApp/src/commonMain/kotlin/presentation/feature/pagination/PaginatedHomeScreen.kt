@@ -20,8 +20,8 @@ import app.cash.paging.LoadStateLoading
 import app.cash.paging.LoadStateNotLoading
 import app.cash.paging.compose.collectAsLazyPagingItems
 import cafe.adriel.voyager.core.screen.Screen
-import presentation.theme.Theme
 import presentation.feature.home.ProductItemView
+import presentation.theme.Theme
 
 object PaginatedHomeScreen : Screen {
 
@@ -31,7 +31,11 @@ object PaginatedHomeScreen : Screen {
         val productList = viewModel.productList.collectAsLazyPagingItems()
 
         LaunchedEffect(Unit) {
-            viewModel.saveUser("Aslam", "aslam.hossin@monstar-lab.com")
+
+            /* Ensuring the data store is working by saving user info
+
+                viewModel.saveUser("Aslam", "aslam.hossin@monstar-lab.com")
+            */
         }
 
 
