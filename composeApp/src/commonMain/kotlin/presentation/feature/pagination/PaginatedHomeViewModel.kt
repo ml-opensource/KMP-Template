@@ -18,20 +18,10 @@ import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-/**
- * ViewModel for managing data related to the paginated home screen.
- * Uses [GetPaginatedProductsUseCase] to fetch paginated products data.
- * Utilizes DataStore for storing and retrieving a simple count value.
- */
 class PaginatedHomeViewModel : KMMViewModel(), KoinComponent {
 
-    // Common methods for User management
     private val userUseCase: GetUserFromPreferenceUseCase by inject()
-
-    // Dependency injection for GetPaginatedProductsUseCase
     private val getPaginatedProductsUseCase: GetPaginatedProductsUseCase by inject()
-
-    // Flow of paginated product list obtained from the use case
     val productList = getPaginatedProductsUseCase().cachedIn(viewModelScope.coroutineScope)
     private val _user = MutableStateFlow<User?>(null)
 
