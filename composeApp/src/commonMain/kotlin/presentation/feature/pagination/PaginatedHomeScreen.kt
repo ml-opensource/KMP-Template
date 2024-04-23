@@ -10,6 +10,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -19,8 +20,8 @@ import app.cash.paging.LoadStateLoading
 import app.cash.paging.LoadStateNotLoading
 import app.cash.paging.compose.collectAsLazyPagingItems
 import cafe.adriel.voyager.core.screen.Screen
-import presentation.theme.Theme
 import presentation.feature.home.ProductItemView
+import presentation.theme.Theme
 
 object PaginatedHomeScreen : Screen {
 
@@ -28,6 +29,15 @@ object PaginatedHomeScreen : Screen {
     override fun Content() {
         val viewModel = PaginatedHomeViewModel()
         val productList = viewModel.productList.collectAsLazyPagingItems()
+
+        LaunchedEffect(Unit) {
+
+            /* Ensuring the data store is working by saving user info
+
+                viewModel.saveUser("Aslam", "aslam.hossin@monstar-lab.com")
+            */
+        }
+
 
         Scaffold(
             topBar = {
@@ -77,4 +87,5 @@ object PaginatedHomeScreen : Screen {
             }
         }
     }
+
 }

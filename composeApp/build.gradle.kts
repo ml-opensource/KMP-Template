@@ -35,6 +35,7 @@ kotlin {
             implementation(libs.ktor.client.okhttp)
             implementation(libs.bundles.paging.android)
             implementation(libs.sqldelight.android.driver)
+            api(libs.androidx.startup)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
@@ -58,6 +59,7 @@ kotlin {
             // No need to move the dependency to version catalog
             implementation("co.touchlab:stately-common:2.0.5")
             api(libs.kmm.viewmodel.core)
+            implementation(libs.androidx.datastore.preferences.core)
         }
         commonTest.dependencies {
             implementation(kotlin("test-junit"))
