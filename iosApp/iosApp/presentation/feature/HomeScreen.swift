@@ -18,13 +18,13 @@ struct HomeScreen: View {
             ZStack {
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
-                        ForEach(viewModel.state.productList, id: \.id) { product in
+                        ForEach(viewModel.state.value.productList, id: \.id) { product in
                             Text(product.title)
                         }
                     }
                 }
                 
-                if viewModel.state.isLoading {
+                if viewModel.state.value.isLoading {
                     ProgressView()
                 }
             }

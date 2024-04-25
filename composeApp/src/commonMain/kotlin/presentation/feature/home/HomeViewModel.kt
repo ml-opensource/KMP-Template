@@ -3,7 +3,6 @@ package presentation.feature.home
 import com.rickclephas.kmm.viewmodel.KMMViewModel
 import com.rickclephas.kmm.viewmodel.MutableStateFlow
 import com.rickclephas.kmm.viewmodel.coroutineScope
-import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import domain.model.Product
 import domain.usecase.favorite.AddToFavoriteUseCase
 import domain.usecase.favorite.GetFavoritesUseCase
@@ -22,7 +21,6 @@ class HomeViewModel : KMMViewModel(), KoinComponent {
     private val removeFromFavoriteUseCase: RemoveFromFavoriteUseCase by inject()
     private val _state = MutableStateFlow(viewModelScope, HomeScreenState())
 
-    @NativeCoroutinesState
     val state = _state.asStateFlow()
 
     fun handleIntent(intent: HomeScreenIntent) {

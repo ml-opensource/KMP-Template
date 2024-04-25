@@ -1,5 +1,4 @@
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
-import org.jetbrains.kotlin.js.inline.clean.removeUnusedImports
 
 plugins {
     // this is necessary to avoid the plugins to be loaded multiple times
@@ -9,11 +8,11 @@ plugins {
     alias(libs.plugins.jetbrainsCompose) apply false
     alias(libs.plugins.kotlinMultiplatform) apply false
     alias(libs.plugins.ksp) apply false
-    alias(libs.plugins.nativecoroutines) apply false
     alias(libs.plugins.sqldelight) apply false
     alias(libs.plugins.detekt) apply false
     alias(libs.plugins.spotless)
     alias(libs.plugins.kotlin.dokka)
+    alias(libs.plugins.skie) apply false
 }
 subprojects {
     apply(plugin = rootProject.libs.plugins.kotlin.dokka.get().pluginId)
