@@ -7,6 +7,7 @@ import androidx.compose.runtime.getValue
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
+import presentation.feature.home.HomeScreenRoute
 
 object LoginScreenRoute : Screen {
     @Composable
@@ -16,7 +17,9 @@ object LoginScreenRoute : Screen {
         val state by viewModel.state.collectAsState()
 
         Surface {
-            LoginScreen(navigator, state, viewModel::handleIntent)
+            LoginScreen(state, viewModel::handleIntent) {
+                navigator.replaceAll(HomeScreenRoute)
+            }
         }
     }
 }

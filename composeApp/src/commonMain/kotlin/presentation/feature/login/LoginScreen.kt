@@ -18,14 +18,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import cafe.adriel.voyager.navigator.Navigator
 import presentation.components.appbutton.AppButton
 import presentation.components.apptextfield.AppTextField
-import presentation.feature.home.HomeScreenRoute
 import presentation.theme.Theme
 
 @Composable
-fun LoginScreen(navigator: Navigator, state: LoginState, action: (LoginIntent) -> Unit) {
+fun LoginScreen(
+    state: LoginState,
+    action: (LoginIntent) -> Unit,
+    navigate: () -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -84,7 +86,7 @@ fun LoginScreen(navigator: Navigator, state: LoginState, action: (LoginIntent) -
                 isLoading = state.isLoading,
             )
 
-            if (state.isLoggedIn) navigator.replaceAll(HomeScreenRoute)
+            if (state.isLoggedIn) navigate()
         }
     }
 }

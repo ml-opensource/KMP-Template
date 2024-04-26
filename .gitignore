@@ -37,7 +37,6 @@ build/
 
 # Gradle files
 .gradle/
-gradle-wrapper.jar
 
 # Local configuration files
 /local.properties
