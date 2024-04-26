@@ -78,5 +78,4 @@ object PaginatedHomeScreen : Screen {
             }
         }
     }
-
 }

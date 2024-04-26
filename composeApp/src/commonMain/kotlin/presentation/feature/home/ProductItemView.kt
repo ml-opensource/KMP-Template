@@ -32,7 +32,7 @@ fun ProductItemView(
     product: Product,
     isFavorite: Boolean,
     onFavoriteClick: () -> Unit,
-    onClick: () -> Unit
+    onClick: () -> Unit,
 ) {
     Card(
         modifier = Modifier
@@ -66,27 +66,27 @@ fun ProductItemView(
         ) {
             IconButton(
                 modifier = Modifier.align(Alignment.TopEnd),
-                onClick = { onFavoriteClick() }
+                onClick = { onFavoriteClick() },
             ) {
-                if (isFavorite)
+                if (isFavorite) {
                     Icon(
                         Icons.Filled.Star,
                         contentDescription = "Favorite",
                         tint = Color(0xFFFFD81A),
                         modifier = Modifier
                             .size(44.dp)
-                            .padding(8.dp)
+                            .padding(8.dp),
                     )
-
-                else
+                } else {
                     Icon(
                         Icons.Outlined.StarOutline,
                         contentDescription = "Not Favorite",
                         tint = Color(0xFFFFD81A),
                         modifier = Modifier
                             .size(44.dp)
-                            .padding(8.dp)
+                            .padding(8.dp),
                     )
+                }
             }
 
             Text(

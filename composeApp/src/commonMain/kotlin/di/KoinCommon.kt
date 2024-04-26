@@ -27,7 +27,6 @@ import presentation.feature.pagination.PaginatedHomeViewModel
 
 object Modules {
 
-
     val services = module {
         single<ApiService> { ApiServiceImpl(get()) }
     }
@@ -70,6 +69,6 @@ fun initKoin(
         dataPersistenceModule,
         repositoryModule,
         useCaseModule,
-        platformModule
+        platformModule,
     )
 }

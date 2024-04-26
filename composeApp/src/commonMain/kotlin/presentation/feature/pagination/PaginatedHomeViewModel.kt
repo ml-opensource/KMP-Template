@@ -7,24 +7,22 @@ import domain.usecase.GetUserFromPreferenceUseCase
 import domain.usecase.User
 import domain.usecase.product.GetPaginatedProductsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class PaginatedHomeViewModel(
     getPaginatedProductsUseCase: GetPaginatedProductsUseCase,
-    private val userUseCase: GetUserFromPreferenceUseCase
+    private val userUseCase: GetUserFromPreferenceUseCase,
 ) : ViewModel() {
 
     val productList = getPaginatedProductsUseCase().cachedIn(viewModelScope)
-    private val _user = MutableStateFlow<User?>(null)
+    private val user = MutableStateFlow<User?>(null)
 
     init {
         getUser()
     }
 
-
     private fun getUser() = viewModelScope.launch {
-        _user.emit(userUseCase.get())
+        user.emit(userUseCase.get())
     }
 
     fun saveUser(name: String, email: String) = viewModelScope.launch {

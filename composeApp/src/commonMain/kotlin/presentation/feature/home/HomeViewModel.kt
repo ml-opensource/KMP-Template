@@ -20,11 +20,10 @@ class HomeViewModel(
     private val removeFromFavoriteUseCase: RemoveFromFavoriteUseCase,
 ) : ViewModel() {
 
-    val _state = MutableStateFlow(HomeScreenState())
+    private val _state = MutableStateFlow(HomeScreenState())
 
     @NativeCoroutinesState
     val state = _state.asStateFlow()
-
 
     fun handleIntent(intent: HomeScreenIntent) {
         when (intent) {
@@ -38,14 +37,14 @@ class HomeViewModel(
             is HomeScreenIntent.OnFavoriteClick -> {
                 val favoriteList = state.value.favoriteList
 
-                if (favoriteList.contains(intent.product))
+                if (favoriteList.contains(intent.product)) {
                     removeFromFavorite(intent.product)
-                else
+                } else {
                     addToFavorite(intent.product)
+                }
             }
         }
     }
-
 
     private suspend fun getFavorites() {
         _state.update { it.copy(isLoading = true) }
@@ -53,7 +52,7 @@ class HomeViewModel(
         _state.update { state ->
             state.copy(
                 isLoading = false,
-                favoriteList = result.getOrDefault(emptyList())
+                favoriteList = result.getOrDefault(emptyList()),
             )
         }
     }
@@ -64,7 +63,7 @@ class HomeViewModel(
         _state.update { state ->
             state.copy(
                 productList = result.getOrNull()?.products ?: emptyList(),
-                isLoading = false
+                isLoading = false,
             )
         }
     }

@@ -64,7 +64,7 @@ object HomeScreen : Screen {
                             },
                             onClick = {
                                 // Handle OnClick
-                            }
+                            },
                         )
                     }
                 }

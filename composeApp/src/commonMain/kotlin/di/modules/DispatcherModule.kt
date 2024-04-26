@@ -1,9 +1,9 @@
 package di.modules
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.IO
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 
 val dispatcherModule = module {
     single(named(Dispatcher.IO)) { Dispatchers.IO }
@@ -16,5 +16,5 @@ enum class Dispatcher {
     IO,
     MAIN,
     DEFAULT,
-    UNCONFINED
+    UNCONFINED,
 }

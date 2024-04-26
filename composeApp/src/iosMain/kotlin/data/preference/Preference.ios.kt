@@ -22,10 +22,10 @@ internal actual fun createDataStore(): DataStore<Preferences> = createDataStore(
             inDomain = NSUserDomainMask,
             appropriateForURL = null,
             create = false,
-            error = null
+            error = null,
         )
 
         // Constructs the full file path for the DataStore
         requireNotNull(docDirectory).path + "/$DATA_STORE_FILE_NAME"
-    }
+    },
 )

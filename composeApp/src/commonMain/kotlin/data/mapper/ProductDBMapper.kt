@@ -15,7 +15,7 @@ class ProductDBMapper {
         databaseModel.rating,
         databaseModel.stock.toInt(),
         databaseModel.thumbnail,
-        databaseModel.title
+        databaseModel.title,
     )
 
     fun mapToDatabaseModel(domainModel: Product) = ProductDB(
@@ -29,6 +29,6 @@ class ProductDBMapper {
         domainModel.stock.toLong(),
         domainModel.thumbnail,
         domainModel.title,
-        domainModel.images
+        domainModel.images,
     )
 }

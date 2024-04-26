@@ -2,9 +2,9 @@ package domain.usecase.favorite
 
 import fakes.FakeDataSource
 import fakes.FakeFavoriteRepository
-import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.test.runTest
 
 class RemoveFromFavoriteUseCaseTest {
     private lateinit var sut: RemoveFromFavoriteUseCase

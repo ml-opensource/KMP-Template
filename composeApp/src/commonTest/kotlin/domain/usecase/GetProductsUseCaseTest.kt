@@ -4,9 +4,9 @@ import domain.model.ProductList
 import domain.usecase.product.GetProductsUseCase
 import fakes.FakeDataSource
 import fakes.FakeProductRepository
-import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.test.runTest
 
 class GetProductsUseCaseTest {
     private lateinit var sut: GetProductsUseCase

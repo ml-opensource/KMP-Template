@@ -3,9 +3,9 @@ package domain.usecase.favorite
 import domain.model.Product
 import fakes.FakeDataSource
 import fakes.FakeFavoriteRepository
-import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlinx.coroutines.test.runTest
 
 class GetFavoritesUseCaseTest {
     private lateinit var sut: GetFavoritesUseCase

@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 class ProductDatabaseDataSource(
     private val dbRef: ProductDatabase,
     private val ioDispatcher: CoroutineDispatcher,
-    private val mapper: ProductDBMapper
+    private val mapper: ProductDBMapper,
 ) : ProductDataSource {
     override suspend fun insertProduct(product: Product) = withContext(ioDispatcher) {
         dbRef.productQueries.insertProduct(mapper.mapToDatabaseModel(product))
