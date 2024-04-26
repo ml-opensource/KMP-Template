@@ -12,8 +12,8 @@ struct ComposeView: UIViewControllerRepresentable {
 
 struct ContentView: View {
     var body: some View {
-        // SplashScreen()
-        ComposeView().ignoresSafeArea(.keyboard) // Compose has own keyboard handler
+         SplashScreen()
+        //ComposeView().ignoresSafeArea(.keyboard) // Compose has own keyboard handler
     }
 }
 

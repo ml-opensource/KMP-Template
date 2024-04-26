@@ -10,7 +10,8 @@ import SwiftUI
 import ComposeApp
 
 struct HomeScreen: View {
-    var viewModel = HomeViewModel()
+    
+    @State var viewModel: HomeViewModel = HomeViewModelProvider().provide()
 
     var body: some View {
         NavigationView {
