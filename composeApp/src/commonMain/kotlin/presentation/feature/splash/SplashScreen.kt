@@ -24,7 +24,7 @@ import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import platform.Greeting
-import presentation.feature.login.LoginScreen
+import presentation.feature.login.LoginScreenRoute
 
 object SplashScreen : Screen {
 
@@ -41,7 +41,7 @@ object SplashScreen : Screen {
             delay(1000)
             showContent = false
             delay(500)
-            navigator.replaceAll(LoginScreen)
+            navigator.replaceAll(LoginScreenRoute)
         }
 
         Column(
