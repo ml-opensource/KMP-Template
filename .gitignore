@@ -93,6 +93,7 @@ DerivedData
 *.xcworkspace
 !default.xcworkspace
 xcuserstate
+*.xcscheme
 
 # Swift Package Manager
 .build/
