@@ -7,12 +7,11 @@
 //
 
 import SwiftUI
-import KMMViewModelSwiftUI
 import ComposeApp
 
 struct HomeScreen: View {
-    @StateViewModel var viewModel = HomeViewModel()
-    
+    var viewModel = HomeViewModel()
+
     var body: some View {
         NavigationView {
             ZStack {

@@ -26,7 +26,6 @@ koin = "3.5.4"
 ktor = "2.3.9"
 ksp = "1.9.23-1.0.19"
 nativecoroutines = "1.0.0-ALPHA-25"
-kmmViewmodelCore = "1.0.0-ALPHA-19"
 sqldelight = "2.0.2"
 spotless = "6.25.0"
 detekt = "1.23.5"
@@ -71,7 +70,6 @@ ktor-serialization-kotlinx-json = { group = "io.ktor", name = "ktor-serializatio
 ktor-client-content-negotiation = { group = "io.ktor", name = "ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-logging = { group = "io.ktor", name = "ktor-client-logging", version.ref = "ktor" }
 
-kmm-viewmodel-core = { module = "com.rickclephas.kmm:kmm-viewmodel-core", version.ref = "kmmViewmodelCore" }
 
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-network-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil" }

@@ -19,8 +19,6 @@
 		C1E9EE7C2B8DCE1C00EE66D8 /* KMPNativeCoroutinesCombine in Frameworks */ = {isa = PBXBuildFile; productRef = C1E9EE7B2B8DCE1C00EE66D8 /* KMPNativeCoroutinesCombine */; };
 		C1E9EE7E2B8DCE1C00EE66D8 /* KMPNativeCoroutinesCore in Frameworks */ = {isa = PBXBuildFile; productRef = C1E9EE7D2B8DCE1C00EE66D8 /* KMPNativeCoroutinesCore */; };
 		C1E9EE802B8DCE1C00EE66D8 /* KMPNativeCoroutinesRxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C1E9EE7F2B8DCE1C00EE66D8 /* KMPNativeCoroutinesRxSwift */; };
-		C1E9EE832B8DCE5500EE66D8 /* KMMViewModelCore in Frameworks */ = {isa = PBXBuildFile; productRef = C1E9EE822B8DCE5500EE66D8 /* KMMViewModelCore */; };
-		C1E9EE852B8DCE5500EE66D8 /* KMMViewModelSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = C1E9EE842B8DCE5500EE66D8 /* KMMViewModelSwiftUI */; };
 		E402536C8CAC213632F9EA4E /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC182C52559F275B41F2FDC /* Pods_iosApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,11 +45,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1E9EE7A2B8DCE1C00EE66D8 /* KMPNativeCoroutinesAsync in Frameworks */,
-				C1E9EE852B8DCE5500EE66D8 /* KMMViewModelSwiftUI in Frameworks */,
 				C1E9EE7C2B8DCE1C00EE66D8 /* KMPNativeCoroutinesCombine in Frameworks */,
 				C1E9EE7E2B8DCE1C00EE66D8 /* KMPNativeCoroutinesCore in Frameworks */,
 				C1E9EE802B8DCE1C00EE66D8 /* KMPNativeCoroutinesRxSwift in Frameworks */,
-				C1E9EE832B8DCE5500EE66D8 /* KMMViewModelCore in Frameworks */,
 				E402536C8CAC213632F9EA4E /* Pods_iosApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,8 +170,6 @@
 				C1E9EE7B2B8DCE1C00EE66D8 /* KMPNativeCoroutinesCombine */,
 				C1E9EE7D2B8DCE1C00EE66D8 /* KMPNativeCoroutinesCore */,
 				C1E9EE7F2B8DCE1C00EE66D8 /* KMPNativeCoroutinesRxSwift */,
-				C1E9EE822B8DCE5500EE66D8 /* KMMViewModelCore */,
-				C1E9EE842B8DCE5500EE66D8 /* KMMViewModelSwiftUI */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* kmp-template.app */;
@@ -536,16 +530,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C1E9EE782B8DCE1C00EE66D8 /* XCRemoteSwiftPackageReference "KMP-NativeCoroutines" */;
 			productName = KMPNativeCoroutinesRxSwift;
-		};
-		C1E9EE822B8DCE5500EE66D8 /* KMMViewModelCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C1E9EE812B8DCE5500EE66D8 /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
-			productName = KMMViewModelCore;
-		};
-		C1E9EE842B8DCE5500EE66D8 /* KMMViewModelSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C1E9EE812B8DCE5500EE66D8 /* XCRemoteSwiftPackageReference "KMM-ViewModel" */;
-			productName = KMMViewModelSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

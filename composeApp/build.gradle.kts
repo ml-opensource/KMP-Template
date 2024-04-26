@@ -66,7 +66,6 @@ kotlin {
             // It's a temporary fix for the issue https://github.com/cashapp/sqldelight/issues/4357
             // No need to move the dependency to version catalog
             implementation("co.touchlab:stately-common:2.0.5")
-            api(libs.kmm.viewmodel.core)
             implementation(libs.androidx.datastore.preferences.core)
         }
         commonTest.dependencies {
