@@ -26,7 +26,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.koinInject
 import presentation.components.appbutton.AppButton
 import presentation.components.apptextfield.AppTextField
-import presentation.feature.pagination.PaginatedHomeScreen
+import presentation.feature.home.HomeScreen
 import presentation.theme.Theme
 
 object LoginScreen : Screen {
@@ -94,7 +94,7 @@ object LoginScreen : Screen {
                     isLoading = state.isLoading,
                 )
 
-                if (state.isLoggedIn) navigator.replaceAll(PaginatedHomeScreen)
+                if (state.isLoggedIn) navigator.replaceAll(HomeScreen)
             }
         }
     }

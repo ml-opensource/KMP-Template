@@ -20,6 +20,7 @@ import app.cash.paging.LoadStateNotLoading
 import app.cash.paging.compose.collectAsLazyPagingItems
 import cafe.adriel.voyager.core.screen.Screen
 import org.koin.compose.koinInject
+import presentation.feature.home.ProductItemView
 import presentation.theme.Theme
 
 object PaginatedHomeScreen : Screen {
@@ -59,7 +60,9 @@ object PaginatedHomeScreen : Screen {
                         is LoadStateNotLoading -> {
                             items(productList.itemCount) { index ->
                                 val product = productList[index]
-                                product?.let { ProductItemView(it) {} }
+                                product?.let {
+                                    ProductItemView(it, false, {}, {})
+                                }
                             }
                         }
 
@@ -75,4 +78,5 @@ object PaginatedHomeScreen : Screen {
             }
         }
     }
+
 }

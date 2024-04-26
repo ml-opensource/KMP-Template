@@ -7,7 +7,6 @@ sealed class ApiDefinition {
     }
 
     object ApiField {
-
         const val PARAM_LIMIT = "limit"
         const val PARAM_SKIP = "skip"
     }

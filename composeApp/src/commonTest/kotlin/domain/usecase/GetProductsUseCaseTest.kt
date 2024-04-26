@@ -1,64 +1,41 @@
 package domain.usecase
 
-import domain.model.Product
 import domain.model.ProductList
-import domain.repository.ProductRepository
-import kotlin.test.BeforeTest
+import domain.usecase.product.GetProductsUseCase
+import fakes.FakeDataSource
+import fakes.FakeProductRepository
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlinx.coroutines.test.runTest
 
 class GetProductsUseCaseTest {
     private lateinit var sut: GetProductsUseCase
 
-    @BeforeTest
-    fun setup() {
-        sut = GetProductsUseCase(MockProductRepository())
+    @Test
+    fun `invoke returns Success`() = runTest {
+        // Arrange
+        sut = GetProductsUseCase(FakeProductRepository(true))
+        val assertedResponse = FakeDataSource.productList
+
+        // Act
+        lateinit var actualResponse: ProductList
+        sut().onSuccess { actualResponse = it }
+
+        // Assert
+        assertEquals(assertedResponse, actualResponse)
     }
 
     @Test
-    fun `getProducts returns Success`() = runTest {
+    fun `invoke returns Failure`() = runTest {
         // Arrange
-        val response = DataSource.productList
+        sut = GetProductsUseCase(FakeProductRepository(false))
+        val assertedResponse = "No Data"
 
         // Act
-        lateinit var result: ProductList
-        sut().collect { result = it }
+        lateinit var actualResponse: String
+        sut().onFailure { actualResponse = it.message.toString() }
 
         // Assert
-        assertEquals(response, result)
+        assertEquals(assertedResponse, actualResponse)
     }
-}
-
-private class MockProductRepository : ProductRepository {
-    override suspend fun getProducts() = DataSource.productList
-}
-
-private object DataSource {
-    val productList = ProductList(
-        products = listOf(
-            Product(
-                id = 1,
-                title = "iPhone 9",
-                description = "An apple mobile which is nothing like apple",
-                price = 549,
-                discountPercentage = 12.96,
-                rating = 4.69,
-                stock = 94,
-                brand = "Apple",
-                category = "smartphones",
-                thumbnail = "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
-                images = listOf(
-                    "https://cdn.dummyjson.com/product-images/1/1.jpg",
-                    "https://cdn.dummyjson.com/product-images/1/2.jpg",
-                    "https://cdn.dummyjson.com/product-images/1/3.jpg",
-                    "https://cdn.dummyjson.com/product-images/1/4.jpg",
-                    "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
-                ),
-            ),
-        ),
-        limit = 30,
-        skip = 0,
-        total = 100,
-    )
 }

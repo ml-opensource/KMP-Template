@@ -36,8 +36,8 @@ class LoginViewModel(
             _state.update { it.copy(isLoading = true) }
             val state = _state.value
             val result = loginUseCase(LoginRequest(state.email, state.password))
-            _state.update { state ->
-                state.copy(
+            _state.update {
+                it.copy(
                     error = result.exceptionOrNull()?.toError()?.message,
                     isLoading = false,
                     isLoggedIn = result.isSuccess,
