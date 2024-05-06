@@ -24,12 +24,12 @@ voyager = "1.0.0"
 koin = "3.5.4"
 ktor = "2.3.9"
 ksp = "1.9.23-1.0.19"
-nativecoroutines = "1.0.0-ALPHA-25"
 kmmViewmodelCore = "1.0.0-ALPHA-19"
 sqldelight = "2.0.2"
 spotless = "6.25.0"
 detekt = "1.23.5"
 androidx-startup = "1.1.1"
+skie = "0.6.4"
 
 [libraries]
 androidx-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastorePreferencesCore" }
@@ -100,8 +100,8 @@ jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-nativecoroutines = { id = "com.rickclephas.kmp.nativecoroutines", version.ref = "nativecoroutines" }
 sqldelight = { id = "app.cash.sqldelight", version.ref = "sqldelight" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 kotlin-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin-dokka" }
+skie = { id = "co.touchlab.skie", version.ref = "skie" }
