@@ -20,6 +20,7 @@ import app.cash.paging.LoadStateLoading
 import app.cash.paging.LoadStateNotLoading
 import app.cash.paging.compose.collectAsLazyPagingItems
 import cafe.adriel.voyager.core.screen.Screen
+import org.koin.compose.koinInject
 import presentation.feature.home.ProductItemView
 import presentation.theme.Theme
 
@@ -27,17 +28,8 @@ object PaginatedHomeScreen : Screen {
 
     @Composable
     override fun Content() {
-        val viewModel = PaginatedHomeViewModel()
+        val viewModel = koinInject<PaginatedHomeViewModel>()
         val productList = viewModel.productList.collectAsLazyPagingItems()
-
-        LaunchedEffect(Unit) {
-
-            /* Ensuring the data store is working by saving user info
-
-                viewModel.saveUser("Aslam", "aslam.hossin@monstar-lab.com")
-            */
-        }
-
 
         Scaffold(
             topBar = {
@@ -87,5 +79,4 @@ object PaginatedHomeScreen : Screen {
             }
         }
     }
-
 }

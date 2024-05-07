@@ -33,7 +33,12 @@ val networkModule = module {
                 level = LogLevel.ALL
             }
             install(ContentNegotiation) {
-                json(Json { isLenient = true; ignoreUnknownKeys = true })
+                json(
+                    Json {
+                        isLenient = true
+                        ignoreUnknownKeys = true
+                    },
+                )
             }
         }
     }

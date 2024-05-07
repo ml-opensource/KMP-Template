@@ -1,32 +1,30 @@
 package presentation.feature.home
 
-import com.rickclephas.kmm.viewmodel.KMMViewModel
-import com.rickclephas.kmm.viewmodel.MutableStateFlow
-import com.rickclephas.kmm.viewmodel.coroutineScope
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import domain.model.Product
 import domain.usecase.favorite.AddToFavoriteUseCase
 import domain.usecase.favorite.GetFavoritesUseCase
 import domain.usecase.favorite.RemoveFromFavoriteUseCase
 import domain.usecase.product.GetProductsUseCase
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
 
-class HomeViewModel : KMMViewModel(), KoinComponent {
-    private val getProductsUseCase: GetProductsUseCase by inject()
-    private val getFavoritesUseCase: GetFavoritesUseCase by inject()
-    private val addToFavoriteUseCase: AddToFavoriteUseCase by inject()
-    private val removeFromFavoriteUseCase: RemoveFromFavoriteUseCase by inject()
-    private val _state = MutableStateFlow(viewModelScope, HomeScreenState())
-
+class HomeViewModel(
+    private val getProductsUseCase: GetProductsUseCase,
+    private val getFavoritesUseCase: GetFavoritesUseCase,
+    private val addToFavoriteUseCase: AddToFavoriteUseCase,
+    private val removeFromFavoriteUseCase: RemoveFromFavoriteUseCase,
+) : ViewModel() {
+    private val _state = MutableStateFlow(HomeScreenState())
     val state = _state.asStateFlow()
 
     fun handleIntent(intent: HomeScreenIntent) {
         when (intent) {
             is HomeScreenIntent.OnLaunch -> {
-                viewModelScope.coroutineScope.launch {
+                viewModelScope.launch {
                     getFavorites()
                     getProducts()
                 }
@@ -35,10 +33,11 @@ class HomeViewModel : KMMViewModel(), KoinComponent {
             is HomeScreenIntent.OnFavoriteClick -> {
                 val favoriteList = state.value.favoriteList
 
-                if (favoriteList.contains(intent.product))
+                if (favoriteList.contains(intent.product)) {
                     removeFromFavorite(intent.product)
-                else
+                } else {
                     addToFavorite(intent.product)
+                }
             }
         }
     }
@@ -68,7 +67,7 @@ class HomeViewModel : KMMViewModel(), KoinComponent {
     }
 
     private fun addToFavorite(product: Product) {
-        viewModelScope.coroutineScope.launch {
+        viewModelScope.launch {
             addToFavoriteUseCase(product)
                 .onSuccess { getFavorites() }
                 .onFailure {
@@ -78,7 +77,7 @@ class HomeViewModel : KMMViewModel(), KoinComponent {
     }
 
     private fun removeFromFavorite(product: Product) {
-        viewModelScope.coroutineScope.launch {
+        viewModelScope.launch {
             removeFromFavoriteUseCase(product)
                 .onSuccess { getFavorites() }
                 .onFailure {

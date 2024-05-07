@@ -17,13 +17,14 @@ internal const val DATA_STORE_FILE_NAME = "theme.preferences_pb"
  * @param producePath Function that produces the path where the DataStore file will be stored.
  * @return DataStore<Preferences> instance.
  */
-
 fun createDataStore(producePath: () -> String): DataStore<Preferences> {
     return PreferenceDataStoreFactory.createWithPath(
         corruptionHandler = null,
         migrations = emptyList(),
-        scope = CoroutineScope(Dispatchers.Default + SupervisorJob()), // Coroutine scope for IO operations
-        produceFile = { producePath().toPath() }, // Produces the file path for the DataStore
+        // Coroutine scope for IO operations
+        scope = CoroutineScope(Dispatchers.Default + SupervisorJob()),
+        // Produces the file path for the DataStore
+        produceFile = { producePath().toPath() },
     )
 }
 

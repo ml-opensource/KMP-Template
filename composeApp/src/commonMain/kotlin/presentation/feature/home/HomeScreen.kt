@@ -47,14 +47,16 @@ fun HomeScreen(state: HomeScreenState, action: (HomeScreenIntent) -> Unit) {
         ) {
             LazyColumn {
                 items(state.productList) { product ->
-                    ProductItemView(product = product,
+                    ProductItemView(
+                        product = product,
                         isFavorite = state.favoriteList.contains(product),
                         onFavoriteClick = {
                             action(HomeScreenIntent.OnFavoriteClick(product))
                         },
                         onClick = {
                             // Handle OnClick
-                        })
+                        },
+                    )
                 }
             }
 

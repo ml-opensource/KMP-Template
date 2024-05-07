@@ -1,4 +1,4 @@
-package presentation.feature.login
+package presentation.feature.splash
 
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -9,17 +9,20 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import org.koin.compose.koinInject
 import presentation.feature.home.HomeScreenRoute
+import presentation.feature.login.LoginScreenRoute
 
-object LoginScreenRoute : Screen {
+object SplashScreenRoute : Screen {
     @Composable
     override fun Content() {
-        val viewModel = koinInject<LoginViewModel>()
+        val viewModel = koinInject<SplashViewModel>()
         val navigator = LocalNavigator.currentOrThrow
         val state by viewModel.state.collectAsState()
 
         Surface {
-            LoginScreen(state, viewModel::handleIntent) {
-                navigator.replaceAll(HomeScreenRoute)
+            SplashScreen(state, viewModel::handleIntent) {
+                state.user?.let {
+                    navigator.replaceAll(HomeScreenRoute)
+                } ?: navigator.replaceAll(LoginScreenRoute)
             }
         }
     }

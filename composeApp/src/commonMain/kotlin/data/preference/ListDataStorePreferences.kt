@@ -11,14 +11,12 @@ import kotlinx.serialization.SerializationException
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 
-
 interface ListDataSource<T> {
     suspend fun getAll(): List<T>
     suspend fun add(item: T)
     suspend fun addAll(items: List<T>)
     suspend fun clear()
 }
-
 
 abstract class ListDataStorePreferences<T>(
     private val dataStore: DataStore<Preferences>,
