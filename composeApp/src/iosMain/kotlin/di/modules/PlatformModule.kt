@@ -4,6 +4,7 @@ import androidx.room.Room
 import androidx.sqlite.driver.bundled.BundledSQLiteDriver
 import data.db.AppDatabase
 import data.db.DataBaseConstants.DATABASE_NAME
+import data.db.instantiateImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import org.koin.dsl.module
@@ -14,7 +15,6 @@ import platform.Foundation.NSUserDomainMask
 
 actual val platformModule = module {
     single<AppDatabase> { createRoomDatabase() }
-
 }
 
 fun createRoomDatabase(): AppDatabase {

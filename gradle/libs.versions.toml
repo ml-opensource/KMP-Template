@@ -31,7 +31,6 @@ androidx-startup = "1.1.1"
 skie = "0.6.4"
 androidxRoom = "2.7.0-alpha01"
 sqlite = "2.5.0-SNAPSHOT"
-roomCommon = "2.6.1"
 
 [libraries]
 androidx-datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastorePreferencesCore" }
@@ -84,7 +83,6 @@ paging-common-test = { module = "app.cash.paging:paging-testing", version.ref = 
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "androidxRoom" }
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "androidxRoom" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
-androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
 
 [bundles]
 voyager = ["voyager-navigator", "voyager-bottomSheetNavigator", "voyager-tabNavigator", "voyager-transitions", "voyager-koin"]
