@@ -4,8 +4,8 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.sqldelight)
     alias(libs.plugins.skie)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -16,7 +16,7 @@ kotlin {
             }
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -27,20 +27,18 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.ktor.client.okhttp)
             implementation(libs.bundles.paging.android)
-            implementation(libs.sqldelight.android.driver)
             api(libs.androidx.startup)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
             implementation(libs.paging.runtime.uikit)
-            implementation(libs.sqldelight.native.driver)
         }
         commonMain.dependencies {
             implementation(compose.components.resources)
@@ -54,9 +52,8 @@ kotlin {
             implementation(libs.bundles.ktor)
             implementation(libs.bundles.coil)
             implementation(libs.bundles.paging)
-            implementation(libs.bundles.sqldelight)
-            // It's a temporary fix for the issue https://github.com/cashapp/sqldelight/issues/4357
-            // No need to move the dependency to version catalog
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.sqlite.bundled)
             implementation("co.touchlab:stately-common:2.0.5")
             api(libs.kmm.viewmodel.core)
             implementation(libs.androidx.datastore.preferences.core)
@@ -115,10 +112,13 @@ kotlin.sourceSets.all {
     }
 }
 
-sqldelight {
-    databases {
-        create("ProductDatabase") {
-            packageName.set("com.monstarlab.kmp")
-        }
-    }
+dependencies {
+    add("kspAndroid", libs.androidx.room.compiler)
+    add("kspIosSimulatorArm64", libs.androidx.room.compiler)
+    add("kspIosX64", libs.androidx.room.compiler)
+    add("kspIosArm64", libs.androidx.room.compiler)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }

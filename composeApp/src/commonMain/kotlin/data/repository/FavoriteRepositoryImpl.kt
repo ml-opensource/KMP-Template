@@ -11,5 +11,5 @@ class FavoriteRepositoryImpl(private val productDataSource: ProductDataSource) :
     override suspend fun addToFavorite(product: Product) = productDataSource.insertProduct(product)
 
     override suspend fun removeFromFavorite(product: Product) =
-        productDataSource.deleteProduct(product.id)
+        productDataSource.deleteProduct(product)
 }

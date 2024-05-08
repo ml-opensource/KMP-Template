@@ -7,5 +7,5 @@ interface ProductDataSource {
 
     suspend fun fetchAllProducts(): List<Product>
 
-    suspend fun deleteProduct(productId: Int)
+    suspend fun deleteProduct(productId: Product)
 }

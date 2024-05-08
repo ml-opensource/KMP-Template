@@ -19,7 +19,6 @@ internal data class ProductDTO(
     val description: String,
     val discountPercentage: Double,
     val id: Int,
-    val images: List<String>,
     val price: Int,
     val rating: Double,
     val stock: Int,
@@ -28,8 +27,7 @@ internal data class ProductDTO(
 )
 
 internal fun ProductDTO.toDomainModel() = Product(
-    brand, category, description, discountPercentage,
-    id, images, price, rating, stock, thumbnail, title,
+    id, brand, category, description, discountPercentage, price, rating, stock, thumbnail, title,
 )
 
 internal fun ProductsResponse.toDomainModel() = ProductList(
