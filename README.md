@@ -2,6 +2,12 @@
 
 This Kotlin Multiplatform project targets Android and iOS using Compose Multiplatform.
 
+<p align="center">
+ <img src="https://github.com/monstar-lab-oss/KMP-Template/assets/95737419/0917435d-5e69-495c-8abc-bdeadb3bae60" width="25%" height="25%" style="margin-right: 50px;" />
+ <img src="https://github.com/monstar-lab-oss/KMP-Template/assets/95737419/79919fd2-4177-45fd-b65d-4324dbfa3db9" width="25%" height="25%" />
+</p>
+
+
 💻 **Techstack**
 -   <img src="https://kotlinlang.org/assets/images/favicon.svg?&v=8607ff59d5296c7642ecd72bd3daa79b" height=12 /> Kotlin Multiplatform
 -   [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) for sharing UIs across multiple platforms with Kotlin
