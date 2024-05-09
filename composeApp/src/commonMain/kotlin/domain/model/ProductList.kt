@@ -1,5 +1,9 @@
 package domain.model
 
+import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
+
 data class ProductList(
     val limit: Int,
     val products: List<Product>,
@@ -7,13 +11,13 @@ data class ProductList(
     val total: Int,
 )
 
+@Entity(tableName = "Product")
 data class Product(
+    @PrimaryKey val id: Int,
     val brand: String,
     val category: String,
     val description: String,
     val discountPercentage: Double,
-    val id: Int,
-    val images: List<String>,
     val price: Int,
     val rating: Double,
     val stock: Int,

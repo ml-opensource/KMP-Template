@@ -104,3 +104,4 @@ Pods/
 /Podfile.shared
 /Podfile.pods
 /Podfile.workspace
+iosApp/Podfile.lock
