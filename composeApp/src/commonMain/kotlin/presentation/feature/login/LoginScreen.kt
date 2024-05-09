@@ -24,7 +24,7 @@ import presentation.theme.Theme
 
 @Composable
 fun LoginScreen(
-    state: LoginState,
+    state: LoginScreenState,
     action: (LoginIntent) -> Unit,
     navigate: () -> Unit
 ) {

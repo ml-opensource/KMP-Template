@@ -16,5 +16,5 @@ enum class Dispatcher {
     IO,
     MAIN,
     DEFAULT,
-    UNCONFINED
+    UNCONFINED,
 }

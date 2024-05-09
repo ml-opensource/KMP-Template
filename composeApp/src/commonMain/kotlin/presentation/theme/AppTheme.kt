@@ -20,10 +20,7 @@ import presentation.theme.typography.Typography
  * Use [Theme.*] to access colors, typography and etc
  */
 @Composable
-fun AppTheme(
-    isDarkMode: Boolean = isSystemInDarkTheme(),
-    content: @Composable () -> Unit,
-) {
+fun AppTheme(isDarkMode: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
     val dimensions = Dimensions.Default
     ProvideDimensions(dimensions = dimensions) {
         ProvideAppTypography {

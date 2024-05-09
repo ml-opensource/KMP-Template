@@ -13,5 +13,5 @@ import core.applicationContext
  */
 
 internal actual fun createDataStore(): DataStore<Preferences> = createDataStore(
-    producePath = { applicationContext.filesDir.resolve(DATA_STORE_FILE_NAME).absolutePath }
+    producePath = { applicationContext.filesDir.resolve(DATA_STORE_FILE_NAME).absolutePath },
 )

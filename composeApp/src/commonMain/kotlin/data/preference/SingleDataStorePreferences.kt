@@ -10,13 +10,11 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 
-
 interface SingleDataSource<T> {
     suspend fun get(): T?
     suspend fun add(item: T)
     suspend fun clear()
 }
-
 
 abstract class SingleDataStorePreferences<T>(
     private val dataStore: DataStore<Preferences>,

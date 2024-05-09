@@ -92,16 +92,15 @@ DerivedData
 *.xcworkspace
 !default.xcworkspace
 xcuserstate
+*.xcscheme
 
 # Swift Package Manager
 .build/
 
 # CocoaPods
-Pods/
-/Podfile.lock
-/Podfile
-/Podfile.private
-/Podfile.shared
-/Podfile.pods
-/Podfile.workspace
+iosApp/Pods/
 iosApp/Podfile.lock
+iosApp/Podfile.private
+iosApp/Podfile.shared
+iosApp/Podfile.pods
+iosApp/Podfile.workspace
