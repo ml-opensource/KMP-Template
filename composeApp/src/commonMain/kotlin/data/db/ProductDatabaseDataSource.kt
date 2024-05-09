@@ -17,7 +17,7 @@ class ProductDatabaseDataSource(
         dbRef.productDao().getAll()
     }
 
-    override suspend fun deleteProduct(productId: Product) = withContext(ioDispatcher) {
-        dbRef.productDao().delete(productId)
+    override suspend fun deleteProduct(product: Product) = withContext(ioDispatcher) {
+        dbRef.productDao().delete(product)
     }
 }
