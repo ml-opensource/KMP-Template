@@ -1,5 +1,7 @@
 # Kotlin Multiplatform Project Setup
 
+![kotlin-version](https://img.shields.io/badge/kotlin-1.9.23-blue)
+
 This Kotlin Multiplatform project targets Android and iOS using Compose Multiplatform.
 
 <p align="center">
