@@ -1,5 +1,7 @@
 # Kotlin Multiplatform Project Setup
 
+![kotlin-version](https://img.shields.io/badge/kotlin-1.9.23-blue)
+
 This Kotlin Multiplatform project targets Android and iOS using Compose Multiplatform.
 
 <p align="center">
@@ -9,48 +11,57 @@ This Kotlin Multiplatform project targets Android and iOS using Compose Multipla
 
 
 💻 **Techstack**
--   <img src="https://kotlinlang.org/assets/images/favicon.svg?&v=8607ff59d5296c7642ecd72bd3daa79b" height=12 /> Kotlin Multiplatform
+-   <img src="https://kotlinlang.org/assets/images/favicon.svg?&v=8607ff59d5296c7642ecd72bd3daa79b" height=12 /> [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html)
 -   [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) for sharing UIs across multiple platforms with Kotlin
-- 🔄 Kotlin Coroutines for async operations
-- 🚀 Jetpack Architecture Components
-- <img src="https://developer.android.com/static/images/spot-icons/jetpack-compose.svg" height = 16>  Jetpack Compose ❤️
+- <img src="https://developer.apple.com/assets/elements/icons/swiftui/swiftui-96x96_2x.png" height=12 /> [Swift UI](https://developer.apple.com/xcode/swiftui/) (Optional)
+- 🗡️ [koin](https://github.com/InsertKoinIO/koin) for Dependency Injection
 - ☁️ [ktor](https://github.com/ktorio/ktor) for networking
 - 🔗 [Kotlin Serialization](https://kotlinlang.org/docs/serialization.html) as primary JSON (de)serialization tool
-- 🗡️ [koin](https://github.com/InsertKoinIO/koin) for Dependency Injection
+- 🔄 [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-overview.html) for async operations
+- 📦 [Room (Kotlin Multiplatform)](https://developer.android.com/kotlin/multiplatform/room) for persistent SQL storage
+- 🗂 [DataStore (Kotlin Multiplatform)](https://developer.android.com/kotlin/multiplatform/datastore) for persistent NoSQL storage
+- 📱 Shared [ViewModel](https://developer.android.com/reference/androidx/lifecycle/ViewModel) by AndroidX
+- 🧭 [Voyager](https://voyager.adriel.cafe/navigation) for navigation
+- 📲 [SKIE](https://skie.touchlab.co/) - Swift Kotlin Interface Enhancer by Touchlab
+- 🖼 Coil for loading images
 - ✨ [Spotless](https://github.com/diffplug/spotless) for code-format control
 - 🔍 [Detekt](https://github.com/detekt/detekt) for static code analysis
 
-## Running the Project
+📒 **Todo**
+- Jetpack Navigation
+- Deeplink Support
+- Build Logic
+
+## Project Setup
 
 ### Android:
 
 1. Open the project in Android Studio.
-2. Go to the `Run/Debug Configurations` dialog.
-3. Add a new configuration for the Android module.
-4. Choose the `app` module from the module list.
-5. Apply and run.
+2. Wait for the build to finish.
+3. Select `composeApp` from the `Run/Debug` Configurations.
+4. Apply and run.
 
-### iOS (First-time setup in Xcode):
+### iOS:
 
-1. Navigate to the `iosApp` directory.
-2. Open an Xcode project (`*.xcodeproj`) or workspace (`*.xcworkspace`) in Xcode.
+1. Navigate to the `KMP-Template/iosApp` directory.
+2. For first-time setup:
+    - Open terminal in that directory and run the command `pod install`.
+    - It’ll generate the `iosApp.xcworkspace` file.
+3. Open the `iosApp.xcworkspace` file in Xcode.
+4. Choose the correct target for your device or simulator in the scheme chooser at the top of the window.
+5. Build and run.
 
-   - If there are both, prefer opening the `.xcworkspace`.
+### iOS with Swift UI:
 
-3. For first-time setup, ensure that you have the correct signing and team settings:
-
-   - Go to the project editor by clicking on the project name in the navigator.
-   - Select the target from the list.
-   - In the Signing & Capabilities tab, choose your development team and ensure that signing is
-     configured correctly.
-
-4. Choose the correct target for your device or simulator in the scheme chooser at the top of the
-   window.
-5. Build and run the project.
+If you want to run the iOS app with swift UI (not compose multiplatform)
+1. Open the `iosApp.xcworkspace` file in Xcode.
+2. Navigate to the `iosApp/presentation/ContentView` file in Xcode.
+3. Inside the ContentView body, uncomment the line `SplashScreen()` and comment out the `ComposeView().ignoresSafeArea(.keyboard)`.
+4. Build and run.
 
 ## Structure
 
-- `/composeApp`: Contains code shared across your Compose Multiplatform applications.
+- `/composeApp`: Contains code shared across the Compose Multiplatform applications.
     - `commonMain`: Holds code that's common for all targets.
     - Platform-specific directories (e.g., `androidMain`, `iosMain`): Contain Kotlin code that will
       compile only for the designated platform. For iOS-specific Kotlin code, such as integration with
@@ -64,10 +75,10 @@ This Kotlin Multiplatform project targets Android and iOS using Compose Multipla
 Template implements [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) and follows [best practices](https://developer.android.com/topic/architecture) provided by Google with some tweaks here and there
 
 ### Presentation layer
-In our Android world, the Presentation layer or UI Layer is our Activities, Fragments, Jetpack Compose UI screens and components, and ViewModels. The Presentation layer interacts with the Domain Layer where our business logic happens.
+The Presentation layer or UI Layer is our Jetpack Compose UI screens and components, and ViewModels. The Presentation layer interacts with the Domain Layer where our business logic resides.
 
 ### Domain layer
-The domain layer contains the application's business logic. This layer should only work with abstractions and as such it would never know about how different layers look like. It shouldn’t know about any Databases, APIs, or even Android Framework.
+The domain layer contains the application's business logic. This layer only works with abstractions and as such it never knows about how different layers look like. It doesn't know about any Databases, APIs, or even any Frameworks.
 
 ### Data layer
 The data layer is where the actual interactions happen between different data sources. This layer “implements” parts of the Domain layer and communicates with the APIs, Databases, and other services and SDKs.
